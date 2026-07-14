@@ -1,0 +1,25 @@
+name: Documentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.md'
+      - 'ops/check-docs-links.php'
+      - '.github/workflows/docs.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - '**/*.md'
+      - 'ops/check-docs-links.php'
+      - '.github/workflows/docs.yml'
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check internal Markdown links
+        run: php ops/check-docs-links.php

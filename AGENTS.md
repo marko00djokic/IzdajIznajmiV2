@@ -1,29 +1,148 @@
-# Repository Guidelines
+# IzdajIznajmiV2 — vodič za AI agente
 
-## Project Structure & Module Organization
-- `frontend/` holds the Vue 3 + Vite SPA (`src/`, `tests/*.spec.ts`, `e2e/`, configs); `backend/` contains the Laravel 12 API, migrations, policies, and PHPUnit suites.
-- `docs/` stores API contracts, QA/UAT plans, and deployment instructions; `ops/` provides the deploy/rollback shell helpers plus cron/nginx/supervisor snippets.
-- Legacy Laravel folders (`app/`, `database/`) support the API, and `README.md` plus `docs/dev-setup.md` are the primary onboarding guides.
+## Svrha i izvor istine
 
-## Build, Test, and Development Commands
-- Backend bootstrap: `cd backend && composer install && cp .env.example .env && php artisan key:generate && php artisan migrate:fresh --seed`; run `php artisan storage:link`, `php artisan queue:work`, and `php artisan schedule:work` during dev to keep media jobs and auto-expiry working.
-- Frontend dev: `cd frontend && npm install && cp .env.example .env && npm run dev -- --host --port 5173`; use `VITE_USE_MOCK_API=true` for mock mode.
-- Build/test: `npm run build` (TS and Vite), `npm run test` (Vitest units), and `npm run test:e2e` (mock build + Playwright smoke; run `npx playwright install --with-deps chromium` once).
+`IzdajIznajmiV2` je marketplace za kratkoročno i srednjoročno izdavanje
+smeštaja. Funkcionalan MVP je u fazi stabilizacije i pripreme za stvarnu
+produkciju.
 
-## Coding Style & Naming Conventions
-- Frontend: 2-space indentation, PascalCase Vue components, camelCase stores/services, and kebab-case filenames/routes.
-- Backend: PSR-12 with 4-space indentation, descriptive class names (controllers, policies, resources), and `/api/v1` endpoints guarded by role/rate limit middleware described in `AppServiceProvider`.
-- Verify TypeScript changes via `npm run build` and PHP changes via `php artisan test` (or `vendor/bin/phpunit`) before committing.
+- Kod, migracije, konfiguracija i automatizovani testovi su izvor istine za
+  implementirano ponašanje.
+- `docs/` objašnjava sistem; ne sme da nadjača kod niti da duplira kanonski
+  dokument.
+- Za početnu navigaciju pročitaj samo ovaj fajl. Dodatne dokumente biraj iz
+  tabele ispod.
+- Centralna dokumentacija je na srpskom, latinicom; tehnički identifikatori
+  ostaju na engleskom.
 
-## Testing Guidelines
-- Backend specs live in `backend/tests/Unit` and `backend/tests/Feature`; name files with `*Test.php` and keep domain logic in features/policies.
-- Frontend unit specs sit in `frontend/tests/*.spec.ts`, Playwright smoke lives in `frontend/e2e/smoke.spec.ts`; run `npm run test` for logic and `npm run test:e2e` for browser coverage.
-- Update `docs/test-plan-sr.md` or `docs/uat-test-plan-sr.md` when you change flows that QA or UAT rely on.
+## Mapa repozitorijuma
 
-## Commit & Pull Request Guidelines
-- Keep commits imperative (“Add health endpoints”, “Fix filter modal z-index”), mention the area touched (backend/frontend/docs/ops), and note the commands you ran; link related issues when possible.
-- PRs require a clear summary, testing notes, linked issue/story, and any UI screenshots or contract changes.
+| Putanja | Odgovornost |
+| --- | --- |
+| `frontend/` | Vue 3, Vite, TypeScript, Pinia, Router, Vitest i Playwright |
+| `backend/` | Laravel 12 API, Sanctum, politike, poslovi, migracije i PHPUnit |
+| `docs/` | Kanonska projektna, razvojna, feature, API, QA i ops dokumentacija |
+| `ops/` | Deploy/rollback, Nginx, backup, supervisor i k6 skripte |
+| `.ai/memory/` | Kratak status projekta za roadmap i nastavak ranijeg rada |
+| `.github/workflows/` | CI i deploy workflow-i |
+| `example/` | Samo read-only referenca; nije deo aplikacije niti se menja u projektnim zadacima |
 
-## Environment & Ops Notes
-- Mirror the sample env files (`frontend/.env.example`, `backend/.env.example`) and keep values for `SANCTUM_STATEFUL_DOMAINS`, queue driver, image options, and CORS aligned with `docs/dev-setup.md`.
-- Use the scripts in `ops/` for deploy/rollback, and update `docs/deploy/DEPLOYMENT.md` whenever SSH, cron, or nginx helpers change; GitHub workflows live under `.github/workflows/deploy-*.yml`.
+Laravel nema aktivne root `app/` ili `database/` direktorijume; ceo backend je
+u `backend/`.
+
+## Routing po vrsti zadatka
+
+| Zadatak | Prvo pročitaj | Glavni entry points | Provera |
+| --- | --- | --- | --- |
+| Product tok/uloge | `docs/01-project/` | frontend stranice, API rute | ciljane feature testove |
+| Frontend feature/bug | `frontend/AGENTS.md`, feature doc | `frontend/src/pages`, `components`, `stores`, `services` | `npm run build`, `npm run test` |
+| Backend/API feature/bug | `backend/AGENTS.md`, `docs/05-api/README.md` | `backend/routes/api.php`, kontroleri, modeli, politike | `php artisan test` ili ciljani test |
+| API ugovor | `docs/05-api/contract.md` | `backend/routes/api.php`, Resources/Requests | `php artisan route:list --path=api` |
+| Baza/modeli | `docs/02-architecture/data-model.md` | `backend/database/migrations`, modeli | migracije i feature testovi |
+| Auth/security/KYC | `docs/04-features/security/`, `docs/04-features/kyc.md` | middleware, policies, security config | security/KYC testovi |
+| Search/geolokacija | `docs/04-features/search.md` | listing store, SearchController, search config | search testovi |
+| Chat/realtime | `docs/04-features/chat.md`, `docs/07-operations/chat-realtime.md` | chat store/page, ConversationController, events | ChatApi/Signals testovi |
+| Docker/lokalni rad | `docs/03-development/quick-start.md` | compose fajlovi i env primeri | `docker compose config` |
+| Deploy/incident | `docs/07-operations/` i `ops/AGENTS.md` | compose production, `ops/` | runbook verifikacija |
+| Test/QA/UAT | `docs/06-testing/README.md` | `backend/tests`, `frontend/tests`, `frontend/e2e` | odgovarajuća command matrica |
+| Roadmap/nastavak | `.ai/memory/project-status.md`, `docs/08-roadmap/` | povezani kod i issue kontekst | proveri status prema kodu |
+| Dokumentacija | `docs/AGENTS.md` | `docs/README.md`, kanonski domenski doc | `php ops/check-docs-links.php` |
+
+## Obavezni protokol pre izmene
+
+1. Utvrdi traženi obim i pročitaj samo ciljane dokumente iz routing tabele.
+2. Proveri `git status --short`; postojeće korisničke izmene čuvaj i ne
+   prepisuj.
+3. Pronađi postojeći tok, testove i source of truth pre kreiranja novog sloja.
+4. Kod kontradikcije veruj kodu/testovima/config-u, a dokumentaciju ispravi u
+   istom zadatku.
+5. Napravi najmanju koherentnu izmenu i pokreni ciljane provere; puni suite
+   biraj prema riziku.
+
+## Kritični gotchas
+
+- Podrazumevani lokalni workflow je kompletan `docker-compose.yml` stack:
+  Postgres, backend, queue, scheduler, Reverb, frontend i Meilisearch.
+- Frontend bira servis pri build/start vremenu. `VITE_USE_MOCK_API=true` koristi
+  mock podatke; `false` koristi Laravel i Sanctum cookie sesiju.
+- Za real API podesi stateful domene/CORS, prvo pozovi
+  `/sanctum/csrf-cookie` i šalji credential cookies.
+- Kanonski API je `/api/v1`. Neversionisani `/api/*` postoji kao tranzicioni
+  alias i ne treba ga uvoditi u nove klijente.
+- Kanonski zahtev za smeštaj je `Application`. `BookingRequest` kod postoji,
+  ali trenutno nema rute i predstavlja legacy ostatak.
+- Queue je potreban za slike, obaveštenja, push i pojedine search/KYC poslove;
+  scheduler pokreće expiry, digeste, saved-search matcher i retention poslove.
+- Reverb radi u compose stacku, dok chat i notification UI i dalje koriste i
+  polling kao fallback. Ne pretpostavljaj isključivo WebSocket ponašanje.
+- Meilisearch je uključen u Docker workflow. `VITE_SEARCH_V2=true` bira V2 UI;
+  map mode koristi legacy/geospatial listing pretragu.
+- Favoriti su browser-local (`ii-favorites`); real API nema favorites endpoint.
+- `/map` je vizuelni showcase, dok `/search` sadrži stvarnu Leaflet/OSM mapu.
+- `docker-compose.production.yml` je production-like self-hosted okruženje sa
+  testnim podacima, ne potvrđena javna produkcija.
+- Tajne i stvarne `.env` vrednosti nikada ne upisuj u dokumentaciju.
+
+## Komande
+
+```bash
+# Podrazumevani razvoj
+docker compose up -d --build
+docker compose exec backend php artisan migrate --seed
+
+# Backend
+cd backend
+php artisan test
+php artisan route:list --path=api
+./vendor/bin/pint --test
+
+# Frontend
+cd frontend
+npm run build
+npm run test
+npm run test:e2e
+
+# Dokumentacija i compose validacija
+php ops/check-docs-links.php
+docker compose config --quiet
+docker compose -f docker-compose.production.yml config --quiet
+```
+
+Ako instalirane zavisnosti nedostaju, prvo koristi `composer install` odnosno
+`npm ci`. Ne menjaj lock fajlove bez potrebe zadatka.
+
+## Stil i testovi
+
+- Frontend: 2 razmaka, PascalCase komponente, camelCase store/service moduli,
+  kebab-case rute i dokumenti.
+- Backend: PSR-12, 4 razmaka, jasni Request/Resource/Policy slojevi i `/api/v1`
+  ugovor.
+- Ciljane testove pokreni uvek kada je moguće. Build/type-check je obavezan za
+  TypeScript izmene; puni suite je obavezan za široke ili rizične izmene.
+- Ne popravljaj nepovezane padove bez saglasnosti; jasno ih prijavi.
+
+## Održavanje dokumentacije
+
+- Prvo pronađi kanonski dokument u
+  `docs/02-architecture/source-of-truth.md`; ažuriraj njega i iz drugih mesta
+  samo linkuj.
+- Ažuriraj dokumentaciju kada se menja ponašanje, ugovor, arhitektura, setup,
+  operacija ili korisnički tok.
+- Changelog/release belešku dodaj samo za promenu ponašanja proizvoda,
+  arhitekture ili operacija.
+- `.ai/memory/project-status.md` menjaj samo kada se promeni praćeni status ili
+  roadmap stavka.
+- Za značajnu, teško reverzibilnu odluku dodaj kratak ADR u
+  `docs/02-architecture/decisions/`.
+- Zastareo dokument odmah ispravi, označi `stale` ili premesti u
+  `docs/09-archive/`; planirano nikad ne predstavljaj kao implementirano.
+- Feature i runbook dokumenti prate šablone u
+  `docs/03-development/templates/`.
+
+## Git i handoff
+
+- Ne briši niti resetuj tuđe izmene. Ne koristi destruktivne Git komande bez
+  eksplicitnog zahteva.
+- Commit poruka treba da bude imperativna i da navede oblast.
+- U završnom izveštaju navedi rezultat, relevantne fajlove, provere i poznate
+  rizike; ne tvrdi da je provera prošla ako nije pokrenuta.

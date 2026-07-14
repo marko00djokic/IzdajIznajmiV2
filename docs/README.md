@@ -1,46 +1,59 @@
-# Documentation Index
+# Dokumentacija projekta IzdajIznajmiV2
 
-This index helps new developers and support engineers quickly find the right documents.
+Ovo je početna tačka i za novog developera i za tehničku procenu projekta.
+Kod i automatizovani testovi su izvor istine; dokumentacija daje navigaciju,
+namenu i operativni kontekst.
 
-## Start here
-- End-user feature guide by role: `docs/full-docs.md`
-- Local setup and dev workflow: `docs/dev-setup.md`
-- Deployment and rollback basics: `docs/deploy/DEPLOYMENT.md`
-- API surface: `docs/api-contract.md`
-- API request examples: `docs/api-examples.md`
+## Onboarding za 2–5 minuta
 
-## Domain docs
-- Security (MFA, sessions): `docs/security/SECURITY.md`
-- KYC flow and privacy model: `docs/kyc/KYC.md`
-- Transactions/contracts/payments: `docs/transactions/TRANSACTIONS.md`
-- Search v2 (MeiliSearch): `docs/search/SEARCH_V2.md`
-- Recommendations/badges: `docs/recommendations/RECOMMENDATIONS.md`
+1. Pročitaj [pregled proizvoda](01-project/product-overview.md).
+2. Otvori [pregled arhitekture](02-architecture/overview.md).
+3. Pokreni projekat kroz [Docker quick start](03-development/quick-start.md).
 
-## Operations and support runbooks
-- Queue and scheduler operations: `docs/ops/QUEUE-OPS.md`
-- Chat and realtime support: `docs/ops/CHAT-REALTIME-SUPPORT.md`
-- Load testing: `docs/ops/LOAD-TESTING.md`
-- Backups/restore: `docs/ops/BACKUPS.md`
-- Performance and DB observability: `docs/ops/PERFORMANCE.md`
-- Docker operations manual: `docs/docker-manual-sr.md`
+Za AI agenta root [`AGENTS.md`](../AGENTS.md) je jedini obavezni početni
+dokument; on dalje rutira prema vrsti zadatka.
 
-## QA and validation
-- Engineering test plan: `docs/test-plan-sr.md`
-- UAT test plan: `docs/uat-test-plan-sr.md`
-- Development review checklist: `docs/development-review.md`
-- V1 -> V2 parity checklist: `docs/parity/phase-a-parity-checklist.md`
+## Mapa po oblasti
 
-## Release notes
-Use `docs/releases/` for all release/change logs.
-- Chat: `docs/releases/chat/chat-realtime-phase-g-and-hotfixes-2026-02-13.md`
-- Notifications/PWA: `docs/releases/notifications/web-push-pwa-rollout-2026-02-20.md`
-- Verification: `docs/releases/verification/email-only-verification-fix-2026-02-21.md`
+| Oblast | Šta sadrži | Početni dokument |
+| --- | --- | --- |
+| `01-project` | proizvod, uloge, glossary, journey-i, ograničenja | [Project indeks](01-project/README.md) |
+| `02-architecture` | komponente, data model, code map, ADR i izvori istine | [Architecture indeks](02-architecture/README.md) |
+| `03-development` | quick start, Docker/native rad, servisi, env, doc pravila | [Development indeks](03-development/README.md) |
+| `04-features` | aktivni domenski i security dokumenti | [Feature indeks](04-features/README.md) |
+| `05-api` | overview, kanonski ugovor i cURL primeri | [API indeks](05-api/README.md) |
+| `06-testing` | strategija, komande, manual i UAT planovi | [Testing indeks](06-testing/README.md) |
+| `07-operations` | deployment, backup, queue, realtime, performance | [Operations indeks](07-operations/README.md) |
+| `08-roadmap` | planirano i nezatvoren V1→V2 parity | [Roadmap](08-roadmap/README.md) |
+| `09-archive` | istorijski planovi, release notes i zamenjeni dokumenti | [Archive indeks](09-archive/README.md) |
 
-## Product/UI references
-- UI tokens and route map: `docs/ui.md`
-- UI reference images: `docs/ui-reference/README.md`
+## Mapa po zadatku
 
-## Notes
-- `docs/notes/` is reserved for local personal notes and is git-ignored.
-- Do not commit product/system documentation into `docs/notes/`.
-- Prefer updating long-lived runbooks over adding one-off notes.
+| Želim da… | Otvori |
+| --- | --- |
+| razumem korisnike i poslovne tokove | [uloge i glossary](01-project/roles-and-glossary.md), [journey-i](01-project/user-journeys.md) |
+| pronađem kod za feature | [code map](02-architecture/code-map.md), zatim odgovarajući [feature doc](04-features/README.md) |
+| vidim šta nije završeno | [known limitations](01-project/known-limitations.md) i [roadmap](08-roadmap/README.md) |
+| pokrenem lokalni stack | [quick start](03-development/quick-start.md) |
+| proverim API | [contract](05-api/contract.md) i [examples](05-api/examples.md) |
+| pokrenem testove ili UAT | [test strategy](06-testing/README.md) |
+| deployujem ili rešim incident | [operations](07-operations/README.md) |
+| proverim autoritativni izvor | [source-of-truth matrica](02-architecture/source-of-truth.md) |
+
+## Status oznake
+
+- `implemented` — potvrđeno u aktivnom kodu/testovima;
+- `partial` — deo toka postoji, ali ima eksplicitno ograničenje;
+- `planned` — nije implementirano i pripada roadmapu;
+- `historical` — zapis prošlog stanja, ne operativno uputstvo;
+- `stale` — zahteva proveru pre korišćenja.
+
+Dokumenti skloni zastarevanju imaju metadata blok sa statusom, source of truth
+i datumom poslednje ciljane provere.
+
+## Pravilo održavanja
+
+Ne kreiraj novi zbirni dokument ako tema već ima kanonski izvor. Ažuriraj
+source of truth i sa drugih mesta samo linkuj. Izmena koda mora ažurirati
+povezani dokument kada menja ponašanje, API ugovor, arhitekturu, setup,
+operacije ili korisnički tok.
