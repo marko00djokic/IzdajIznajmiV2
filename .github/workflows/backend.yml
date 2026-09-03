@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   test:
@@ -30,10 +31,6 @@ jobs:
 
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
-
-      - name: Security audit (Composer)
-        run: composer audit --no-dev --format=plain
-        continue-on-error: false
 
       - name: Lint (Pint)
         run: ./vendor/bin/pint --test

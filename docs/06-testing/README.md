@@ -1,7 +1,7 @@
 # Strategija testiranja
 
 > Status: `active`
-> Poslednja ciljana provera: 2026-07-15
+> Poslednja ciljana provera: 2026-09-03
 > Source of truth: package scripts, PHPUnit/Vitest/Playwright config i test kod
 
 ## Slojevi
@@ -30,6 +30,23 @@
 Ciljane testove pokreni uvek kada je moguće. Puni suite bira se prema riziku i
 obimu, a široka cross-stack promena zahteva backend + frontend build/test i
 relevantan browser/manual scenario.
+
+## CI okidanje i dependency audit
+
+Backend, frontend i E2E workflow-i ostaju obavezne regresione provere na svakom
+pull request-u, a mogu i ručno da se pokrenu preko `workflow_dispatch`.
+
+Provera ranjivosti nije deo test job-a. Kanonski `Dependency Audit` workflow
+proverava zaključane produkcione Composer i npm zavisnosti:
+
+- na svakoj izmeni manifest/lock fajlova;
+- jednom nedeljno, kako bi nove bezbednosne objave bile otkrivene i bez izmene
+  repozitorijuma;
+- ručno preko `workflow_dispatch`, uključujući proveru izmena samog audit
+  workflow-a.
+
+Na ovaj način neuspeh dependency audita ostaje vidljiv kao bezbednosni signal,
+ali se više ne predstavlja kao pad PHPUnit/Vitest provere na nepovezanom PR-u.
 
 ## Aktivni planovi
 
