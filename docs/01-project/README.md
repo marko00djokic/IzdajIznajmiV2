@@ -11,6 +11,8 @@ koncepti. Implementacioni detalji pripadaju arhitekturi i feature dokumentima.
   pregled namene, funkcionalnosti i integrisanih tehnologija.
 - [PIR plan](pir-plan.md) — analiza smernica, potvrđene odluke,
   metodologija i radna struktura istraživanja.
+- [PIR verzija 0.1](pir-verzija-0-1.md) — akademska pre-eksperimentalna verzija
+  sa literaturom, zaključanim dizajnom i proverljivim tehničkim baseline-om.
 - [Prompt za izradu PIR-a](pir-ai-prompt.md) — propratne instrukcije i paket
   materijala za AI agenta koji priprema nultu verziju rada.
 
