@@ -42,7 +42,8 @@ proverava zaključane produkcione Composer i npm zavisnosti:
 - na svakoj izmeni manifest/lock fajlova;
 - jednom nedeljno, kako bi nove bezbednosne objave bile otkrivene i bez izmene
   repozitorijuma;
-- ručno preko `workflow_dispatch`.
+- ručno preko `workflow_dispatch`, uključujući proveru izmena samog audit
+  workflow-a.
 
 Na ovaj način neuspeh dependency audita ostaje vidljiv kao bezbednosni signal,
 ali se više ne predstavlja kao pad PHPUnit/Vitest provere na nepovezanom PR-u.
