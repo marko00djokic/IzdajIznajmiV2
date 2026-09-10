@@ -107,6 +107,9 @@ Laravel API. Real režim koristi Sanctum cookie sesije i zahteva usklađene CORS
 Potpuna command matrica je u
 [strategiji testiranja](docs/06-testing/README.md), a env promenljive su
 objašnjene u [environment vodiču](docs/03-development/environment.md).
+Za rad AI agenata koristi [Serena MCP i OpenSpec
+workflow](docs/03-development/ai-agent-tools.md), sa jasno definisanim
+situacijama u kojima semantička navigacija ili spec-driven plan prethode kodu.
 
 ## Dokumentacija
 

@@ -1,0 +1,35 @@
+schema: spec-driven
+
+context: |
+  IzdajIznajmiV2 is a brownfield marketplace monorepo with a Vue 3/TypeScript
+  frontend and a Laravel 12/PHP backend. The canonical API is /api/v1.
+  Existing code, migrations, configuration, and automated tests are the source
+  of truth. Central documentation is written in Serbian Latin; technical
+  identifiers stay in English. Read the root AGENTS.md and the relevant nested
+  AGENTS.md before proposing or applying a change. Prefer the smallest coherent
+  extension of existing architecture and preserve unrelated user changes.
+
+rules:
+  proposal:
+    - State user impact, scope, and explicit non-goals.
+    - Distinguish observed current behavior from the proposed behavior.
+  design:
+    - Reuse existing services, interfaces, and project patterns before adding a new layer.
+    - Cover frontend/backend/API/data/operations impact only when the change touches those areas.
+  specs:
+    - Write externally observable requirements with concrete user or external-system scenarios.
+  tasks:
+    - Include targeted automated checks and a short manual E2E verification scenario.
+    - Include documentation updates only when behavior, contracts, setup, or operations change.
+
+# Per-operation guidance (optional)
+# Add advisory guidance for how apply and archive work should be conducted.
+# This is separate from artifact rules above.
+# Example:
+#   operations:
+#     apply:
+#       guidance:
+#         - Keep test summaries concise
+#     archive:
+#       guidance:
+#         - Summarize the archive outcome before finishing

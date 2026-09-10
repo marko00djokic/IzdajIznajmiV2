@@ -59,6 +59,30 @@ u `backend/`.
 5. Napravi najmanju koherentnu izmenu i pokreni ciljane provere; puni suite
    biraj prema riziku.
 
+## Serena i OpenSpec
+
+Serena MCP je preporučeni alat za semantičku navigaciju kroz kod. Koristi ga
+kada zadatak zahteva pronalaženje simbola i referenci, praćenje call-site-ova i
+toka izvršavanja, razumevanje veze frontend/backend komponenti ili bezbedan
+rename/refactor preko više fajlova. Posebno je koristan u nepoznatom delu
+codebase-a i pre arhitektonske odluke. Za tačnu tekstualnu pretragu, listanje
+fajlova ili malu dokumentacionu/config izmenu dovoljan je `rg` i direktno
+čitanje fajla.
+
+OpenSpec je zvanični CLI + Codex skill workflow (nije MCP server). Preporučuje
+se pre implementacije nove ili nedovoljno precizne funkcionalnosti, breaking
+izmene, većeg refaktora i promene koja zahvata više slojeva ili važan ugovor
+(API, data model, auth/security, realtime/search ili deploy). Koristi
+`$openspec-explore` kada prvo treba razjasniti problem i opcije, a
+`$openspec-propose` kada zahtev treba pretvoriti u proposal, specifikacije,
+design i taskove za pregled pre koda. Za mali lokalizovani bug, mehaničku
+izmenu ili copy/docs-only korekciju ne pravi OpenSpec change osim ako korisnik
+to izričito traži.
+
+Kod većih promena prvo koristi Serenu da potvrdi postojeći tok, pa nalaze ugradi
+u OpenSpec proposal. Setup i provera oba alata opisani su u
+[`docs/03-development/ai-agent-tools.md`](docs/03-development/ai-agent-tools.md).
+
 ## Kritični gotchas
 
 - Podrazumevani lokalni workflow je kompletan `docker-compose.yml` stack:

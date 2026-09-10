@@ -6,4 +6,5 @@
 - [Mock i real API režimi](api-modes.md).
 - [Development services](services.md) — queue, scheduler, Reverb i Meilisearch.
 - [Environment promenljive](environment.md).
+- [AI agent alati](ai-agent-tools.md) — Serena MCP i OpenSpec workflow.
 - [Pravila dokumentacije](documentation-guide.md) i [šabloni](templates/).
