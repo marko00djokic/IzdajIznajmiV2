@@ -6,7 +6,6 @@ use App\Models\Listing;
 use App\Models\ListingEvent;
 use App\Models\SavedSearch;
 use App\Models\User;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
@@ -34,6 +33,7 @@ class RecommendationService
         private readonly ListingSearchService $searchService,
         private readonly SimilarListingsService $similarService,
         private readonly SearchFilterSnapshotService $snapshotService,
+        private readonly LegacyRecommendationScorer $legacyScorer,
     ) {}
 
     /**
@@ -261,76 +261,15 @@ class RecommendationService
 
     private function scoreListing(Listing $listing, array $profile, array $sourceTags): float
     {
-        $score = 0.0;
-
-        $city = $listing->city;
-        if ($city) {
-            $topCities = collect($profile['cities']);
-            $index = $topCities->search(fn ($item) => $item['city'] === $city);
-            if ($index === 0) {
-                $score += 30;
-            } elseif ($index !== false) {
-                $score += 15;
-            }
-        }
-
-        $price = $listing->price_per_month;
-        $priceMin = $profile['priceMin'] ?? null;
-        $priceMax = $profile['priceMax'] ?? null;
-        if ($price !== null && $priceMin !== null && $priceMax !== null) {
-            if ($price >= $priceMin && $price <= $priceMax) {
-                $score += 20;
-            } else {
-                $mid = ($priceMin + $priceMax) / 2;
-                if ($mid > 0 && abs($price - $mid) / $mid <= 0.2) {
-                    $score += 10;
-                }
-            }
-        }
-
-        $roomsTarget = $profile['rooms'] ?? null;
-        $rooms = $listing->rooms ?? $listing->beds;
-        if ($roomsTarget !== null && $rooms !== null && abs($rooms - $roomsTarget) <= 1) {
-            $score += 10;
-        }
-
-        $area = $listing->area;
-        $areaMin = $profile['areaMin'] ?? null;
-        $areaMax = $profile['areaMax'] ?? null;
-        if ($area !== null && $areaMin !== null && $areaMax !== null) {
-            if ($area >= $areaMin && $area <= $areaMax) {
-                $score += 10;
-            }
-        }
-
-        $amenities = $profile['amenities'] ?? [];
-        if (! empty($amenities)) {
-            $listingAmenities = $listing->facilities?->pluck('name')->all() ?? [];
-            $overlap = array_intersect($amenities, $listingAmenities);
-            if (! empty($overlap)) {
-                $score += 15 * (count($overlap) / max(count($amenities), 1));
-            }
-        }
-
-        if ($listing->created_at && $listing->created_at instanceof Carbon) {
-            if ($listing->created_at->greaterThan(now()->subDays(14))) {
-                $score += 5;
-            }
-        }
-
-        $sourceBonus = 0;
-        foreach ($sourceTags as $tag) {
-            $sourceBonus += match ($tag) {
-                'similar_view' => 12,
-                'saved_search' => 10,
-                'recent_search' => 6,
-                'fresh' => 5,
-                default => 0,
-            };
-        }
-        $score += $sourceBonus;
-
-        return $score;
+        return $this->legacyScorer->score([
+            'city' => $listing->city,
+            'price' => $listing->price_per_month,
+            'rooms' => $listing->rooms,
+            'beds' => $listing->beds,
+            'area' => $listing->area,
+            'facilities' => $listing->facilities?->pluck('name')->all() ?? [],
+            'created_at' => $listing->created_at,
+        ], $profile, $sourceTags, now());
     }
 
     private function buildReasons(Listing $listing, array $profile, array $sourceReasons): array

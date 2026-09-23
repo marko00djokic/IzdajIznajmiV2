@@ -1,0 +1,19 @@
+
+   PASS  Tests\Feature\ListingFacilitiesFilterTest
+  ✓ listing is not returned when missing requested facilities            0.51s  
+  ✓ listing is returned when all requested facilities present            0.04s  
+
+   PASS  Tests\Feature\ListingSearchGeoTest
+  ✓ radius is capped                                                     0.04s  
+  ✓ map mode returns lightweight payload                                 0.03s  
+
+   PASS  Tests\Feature\SearchListingsApiTest
+  ✓ search only returns active listings                                  0.04s  
+  ✓ facets keys present even when empty                                  0.03s  
+  ✓ search matches garage filter against legacy facility aliases         0.06s  
+  ✓ search amenity facets are returned in canonical english form         0.05s  
+  ✓ search filters by property attributes                                0.05s  
+
+  Tests:    9 passed (33 assertions)
+  Duration: 0.94s
+

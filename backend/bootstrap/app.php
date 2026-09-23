@@ -4,6 +4,7 @@ use App\Console\Commands\DbReportIndexesCommand;
 use App\Console\Commands\ExpireListingsCommand;
 use App\Console\Commands\GeocodeListingsCommand;
 use App\Console\Commands\PurgeAuditLogsCommand;
+use App\Console\Commands\PirOfflineEvaluateCommand;
 use App\Console\Commands\PurgeChatAttachmentsCommand;
 use App\Console\Commands\PurgeExpiredKycDocumentsCommand;
 use App\Console\Commands\PurgeExpiredTrustedDevicesCommand;
@@ -51,6 +52,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ])
     ->withCommands([
         DbReportIndexesCommand::class,
+        PirOfflineEvaluateCommand::class,
         ExpireListingsCommand::class,
         \App\Console\Commands\SendNotificationDigestCommand::class,
         GeocodeListingsCommand::class,

@@ -4,7 +4,7 @@
 реализована у интегрисаним технологијама“  
 **Predmet u okviru kog se razvija aplikacija:** Programiranje u integrisanim
 tehnologijama  
-**Status:** aktivan plan nastavka posle verzije 0.1; metod i formalna predaja još nisu odobreni<br>
+**Status:** aktivan plan nastavka posle verzije 0.1; istraživački parametar i pravilo za ocenjivače zaključani, mentorsko i formalno odobrenje nisu evidentirani<br>
 **Datum provere:** 23. septembar 2026.<br>
 **Presek nacrta:** verzija 0.1 od 3. septembra 2026, tehnički dokazi na commit-u `d1489fb9a80bf8444bd6564768a5cbab14f28588`<br>
 **Izvori za ovu fazu:** [primer PIR rada](sources/pir-primer-aleksa-matejic.pdf),
@@ -31,12 +31,14 @@ mentorom i predmetnim nastavnikom.
 | --- | --- | --- |
 | Tekst | Verzija 0.1 je celovit pre-eksperimentalni nacrt za mentorski pregled: problem, RQ1–RQ3, H1–H3, literatura, model, metod i ograničenja. Nema potvrđenih rezultata glavnog istraživanja. | [Nacrt](pir-verzija-0-1.md) |
 | Literatura | Matrica sadrži 24 upotrebljena izvora; deo metapodataka traži završnu nezavisnu proveru. | [Matrica literature](research/literature-matrix.md) |
-| Tehnički dokaz | Postojeća heuristika preporuka je statički potvrđena. Model sa eksplicitnim težinama nije dokazan kao implementiran. Runtime baseline nije uspeo: Laravel testovi nisu pokrenuti; `backend/vendor` nedostaje i pri ovoj proveri. | [Matrica dokaza](research/evidence-matrix.md), [baseline](research/technical-baseline.md) |
+| Tehnički dokaz | Postojeća heuristika je potvrđena kodom i ciljanim API testovima na novom preseku. Zaključane Composer zavisnosti su instalirane; 12 ciljanih testova i 40 asercija je prošlo uz izolovano učitan SQLite PDO. Hibrid sa eksplicitnim težinama nije implementiran ni testiran. | [Matrica dokaza](research/evidence-matrix.md), [novi baseline](research/technical-baseline-2026-09-23.md) |
 | Istraživanje | U prilozima nema popunjenog dataset-a, fiksiranih scenarija, nezavisnih relevance ocena, pilota ili korisničkih rezultata. | [Scenariji](research/scenarios.md), [instrumenti](research/instruments.md) |
 | Predaja | Nema DOCX/PDF verzije 0.1 sa proverljivom paginacijom, sadržajem i fusnotama, ni evidentiranog odobrenja mentora i nastavnika. | PIR direktorijum i [uputstvo](sources/pir-uputstvo-prezentacija-v23-2.pptx) |
 
 Ovo je status dokumenata, ne tvrdnja da se van repozitorijuma ništa nije
-desilo. Pre 0.2 ponovo proveriti kod i prikupiti postojeće spoljne potvrde.
+desilo. Student je 23. septembra 2026. naveo da plan, obim, mentor u
+organizaciji i protokol za učesnike još nisu spolja potvrđeni, ali to nije
+blokator za nezavisan tehnički rad. Pre formalne predaje prikupiti potvrde.
 
 ## Obavezni okvir rada
 
@@ -70,7 +72,7 @@ desilo. Pre 0.2 ponovo proveriti kod i prikupiti postojeće spoljne potvrde.
 | Faza | Posao i artefakt | Uslov za prelazak |
 | --- | --- | --- |
 | Pre 0.2: usaglašavanje | Mentoru dostaviti granicu, H1–H3, scenarije, obim i eksperiment. Zabeležiti odluke o planu, obimu/prilozima, organizaciji i mentoru u njoj, radu sa učesnicima i protokolu podataka. | Otvorene tačke su jasno zapisane. Tehnički rad može teći nezavisno, a rad sa učesnicima i formalna predaja čekaju potrebne potvrde. |
-| Pre 0.2: metod | Uskladiti nacrt i priloge: 0.1 predlaže `λ=0,25` i četiri odvojene Likert stavke; nulta verzija predlaže `λ=0,20`, a stari prompt/plan tri stavke. Pre merenja zaključati parametar, H1–H3, metrike i instrument. Rešiti postupak za razliku od jednog ordinalnog stepena između dva ocenjivača: medijana dve ocene može biti necelobrojna. | Jedan protokol bez protivurečnih vrednosti i naknadnog izbora parametra prema ishodu. |
+| Pre 0.2: metod | Primarni `λ=0,25` i analiza osetljivosti `{0; 0,25; 0,50}` zaključani su 23. septembra 2026, pre offline poređenja; nulta verzija sa `λ=0,20` je istorijska. Aktivni instrument ima četiri odvojene Likert stavke, a ranije tri su istorijski predlog. Pre merenja još zaključati H1–H3, metrike i ostatak instrumenta. Pravilo za ocenjivače je zaključano istog dana: svako neslaganje ide na dokumentovani konsenzus, a bez njega na trećeg slepog ocenjivača; konačna ocena je medijana tri celobrojne ocene. | Jedan protokol bez protivurečnih vrednosti i naknadnog izbora parametra prema ishodu. |
 | 0.2: tehnički rad | U izolovanom okruženju instalirati zaključane zavisnosti bez izmene lock fajlova i pokrenuti ciljane Laravel provere. Zamrznuti dozvoljen/sintetički dataset sa poreklom i SHA-256, S1/S2 i hard filtere. Napraviti offline adapter za hibrid, testirati filtere, normalizaciju, missing podatke, tie-break i determinističnost. Na istim kandidatima uporediti bazni redosled, postojeću heuristiku i hibrid; sačuvati verzije, parametre i rank liste. | Komande, test log, checksum i reproduktivni izlazi postoje. H1 se analizira tek uz nezavisne relevance ocene. |
 | 0.2: tekst | Osvežiti tehničku matricu na novom commit-u, proveriti bibliografske zapise, dodati dijagrame komponenti, sekvence i podataka sa zasebnom svrhom. Pripremiti DOCX za pregled sa stvarnim sadržajem i fusnotama. | Nacrt odvaja postojeće, eksperimentalno i planirano; obim i forma su pregledani prema odobrenom okviru. |
 | 0.3: pilot | Pripremiti izolovanu A/B UI varijantu i minimalni logging. Proveriti prevod SUS-a, saglasnost, zadatke, četiri sekvence, 12–18 kandidata po scenariju i težinu S1/S2. Sačuvati pilot izveštaj i reviziju protokola. | Protokol glavnog istraživanja je zamrznut; pilot se ne predstavlja kao glavni nalaz. |

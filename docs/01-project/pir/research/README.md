@@ -14,7 +14,9 @@
 - [`scenarios.md`](scenarios.md) — dataset и сценарији;
 - [`instruments.md`](instruments.md) — празни инструменти и протокол;
 - [`technical-baseline.md`](technical-baseline.md) — стварно извршене и
-  неизвршене провере.
+  неизвршене провере верзије 0.1;
+- [`technical-baseline-2026-09-23.md`](technical-baseline-2026-09-23.md) —
+  почетни runtime пресек рада на верзији 0.2.
 
 Попуњени одговори, контакт подаци, потписане сагласности и необрађени снимци не
 смеју бити уписани у јавни репозиторијум.

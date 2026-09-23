@@ -1,0 +1,128 @@
+{
+  "scenario_version": "v1",
+  "model_version": "pir-hybrid-v1",
+  "locked_at": "2026-09-23",
+  "lambda_primary": 0.25,
+  "lambda_sensitivity": [
+    0,
+    0.5
+  ],
+  "scenarios": [
+    {
+      "id": "S1",
+      "as_of": "2026-09-23T12:00:00+00:00",
+      "hard_filters": {
+        "city": "Beograd",
+        "status": "active",
+        "max_price_monthly_eur": 800,
+        "required_facilities": []
+      },
+      "explicit_weights": {
+        "price": 0.35,
+        "zone": 0.3,
+        "area": 0.15,
+        "rooms": 0.1,
+        "facilities": 0.1
+      },
+      "behavior_weights": {
+        "price": 0.25,
+        "zone": 0.25,
+        "area": 0.2,
+        "rooms": 0.1,
+        "facilities": 0.2
+      },
+      "normalization": {
+        "price_floor_eur": 350,
+        "price_ceiling_eur": 800,
+        "zone_scores": {
+          "Centar": 1,
+          "Širi centar": 0.7,
+          "Periferija": 0.35
+        },
+        "area_target_m2": 55,
+        "rooms_target": 2,
+        "preferred_facilities": [
+          "Garage",
+          "Wifi"
+        ]
+      },
+      "legacy_profile": {
+        "cities": [
+          {
+            "city": "Beograd",
+            "count": 1
+          }
+        ],
+        "priceMin": 450,
+        "priceMax": 800,
+        "rooms": 2,
+        "areaMin": 35,
+        "areaMax": 60,
+        "amenities": [
+          "Garage",
+          "Wifi"
+        ]
+      }
+    },
+    {
+      "id": "S2",
+      "as_of": "2026-09-23T12:00:00+00:00",
+      "hard_filters": {
+        "city": "Beograd",
+        "status": "active",
+        "max_price_monthly_eur": 850,
+        "required_facilities": [
+          "Wifi"
+        ]
+      },
+      "explicit_weights": {
+        "price": 0.3,
+        "zone": 0.15,
+        "area": 0.2,
+        "rooms": 0.15,
+        "facilities": 0.2
+      },
+      "behavior_weights": {
+        "price": 0.2,
+        "zone": 0.15,
+        "area": 0.25,
+        "rooms": 0.15,
+        "facilities": 0.25
+      },
+      "normalization": {
+        "price_floor_eur": 350,
+        "price_ceiling_eur": 850,
+        "zone_scores": {
+          "Centar": 1,
+          "Širi centar": 0.7,
+          "Periferija": 0.35
+        },
+        "area_target_m2": 45,
+        "rooms_target": 3,
+        "preferred_facilities": [
+          "Furnished",
+          "Heating",
+          "Garage"
+        ]
+      },
+      "legacy_profile": {
+        "cities": [
+          {
+            "city": "Beograd",
+            "count": 1
+          }
+        ],
+        "priceMin": 450,
+        "priceMax": 850,
+        "rooms": 2,
+        "areaMin": 35,
+        "areaMax": 60,
+        "amenities": [
+          "Furnished",
+          "Heating",
+          "Garage"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "dataset_version": "v1",
+  "scenario_version": "v1",
+  "files": {
+    "dataset-v1.json": "9e3ee95b846c81450a157b8386523f1dd733d0ff497f506a89eca9234c62495a",
+    "scenarios-v1.json": "7e8b5bb57393d12bcb8e99d3ea9681a9feffe8fa1b994c41a68ff7ca62a9fee9"
+  },
+  "provenance": "All listings are synthetic author-generated fixtures; no PII, real addresses, or images. Missing soft fields use JSON null and missing_fields."
+}

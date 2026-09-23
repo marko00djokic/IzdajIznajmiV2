@@ -1,0 +1,9 @@
+
+   PASS  Tests\Feature\RecommendationsApiTest
+  ✓ recommendations requires seeker                                      0.51s  
+  ✓ recommendations returns active listings from signals                 0.07s  
+  ✓ recommendations handles price window with decimal bounds             0.04s  
+
+  Tests:    3 passed (7 assertions)
+  Duration: 0.71s
+
