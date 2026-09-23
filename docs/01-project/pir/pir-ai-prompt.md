@@ -15,7 +15,7 @@ Tema rada je:
 „Платформа за издавање смештаја са подршком у одлучивању реализована у
 интегрисаним технологијама“.
 
-Primarni projektni dokument je priloženi `docs/01-project/pir-plan.md`. Pročitaj
+Primarni projektni dokument je priloženi `docs/01-project/pir/pir-plan.md`. Pročitaj
 ga u celini pre pisanja. Njegove potvrđene odluke tretiraj kao obavezne, osim
 ako pronađeš direktnu kontradikciju sa zvaničnim uputstvom ili stvarnim kodom.
 
@@ -25,7 +25,7 @@ tehničke tvrdnje izvor istine su, ovim redosledom:
 
 1. kod, migracije, konfiguracija i automatizovani testovi;
 2. kanonska dokumentacija repozitorijuma;
-3. `docs/01-project/pir-plan.md` kao izvor akademskog obima i dogovorenih
+3. `docs/01-project/pir/pir-plan.md` kao izvor akademskog obima i dogovorenih
    metodoloških odluka;
 4. naučna literatura i zvanična tehnička dokumentacija;
 5. priloženi primer PIR-a samo kao obrazac strukture i stila.
@@ -171,8 +171,8 @@ Minimalni paket:
 1. ovaj prompt;
 2. [`pir-plan.md`](pir-plan.md);
 3. [`master-rad-sazetak.md`](master-rad-sazetak.md);
-4. `Алекса-Матејић-РИН-33-17-ПИР.pdf`;
-5. `PIR - Primenjeni istraživački rad PREZENTACIJA v.23.2.pptx`.
+4. [primer PIR rada](sources/pir-primer-aleksa-matejic.pdf);
+5. [prezentacija sa uputstvom](sources/pir-uputstvo-prezentacija-v23-2.pptx).
 
 Preporučeni paket je ceo repozitorijum, jer jedino tada agent može pouzdano da
 proveri šta je implementirano i da navede kod, testove i konfiguraciju kao

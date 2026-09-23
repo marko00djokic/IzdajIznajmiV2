@@ -7,14 +7,8 @@ koncepti. Implementacioni detalji pripadaju arhitekturi i feature dokumentima.
 - [Uloge i glossary](roles-and-glossary.md) — kanonski termini i sinonimi.
 - [Korisnički tokovi](user-journeys.md) — ključni end-to-end scenariji.
 - [Poznata ograničenja](known-limitations.md) — partial i legacy delovi.
-- [Sažetak predloga master rada](master-rad-sazetak.md) — kratak akademski
-  pregled namene, funkcionalnosti i integrisanih tehnologija.
-- [PIR plan](pir-plan.md) — analiza smernica, potvrđene odluke,
-  metodologija i radna struktura istraživanja.
-- [PIR verzija 0.1](pir-verzija-0-1.md) — akademska pre-eksperimentalna verzija
-  sa literaturom, zaključanim dizajnom i proverljivim tehničkim baseline-om.
-- [Prompt za izradu PIR-a](pir-ai-prompt.md) — propratne instrukcije i paket
-  materijala za AI agenta koji priprema nultu verziju rada.
+- [Primenjeni istraživački rad](pir/README.md) — radne verzije, plan,
+  istraživački prilozi, akademski sažetak i referentni materijali.
 
 Source of truth za stvarno ponašanje ostaju kod i testovi. Planirano je
 isključivo u [`08-roadmap`](../08-roadmap/README.md).

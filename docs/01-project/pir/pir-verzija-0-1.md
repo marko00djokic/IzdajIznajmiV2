@@ -205,7 +205,7 @@ API нема favorites endpoint.
 То је објашњива rule-based хеуристика, не тренирани ML модел. Корисник не задаје
 експлицитне тежине, API не враћа допринос сваког критеријума, а једнаки скорови
 немају јавно спецификован стабилан секундарни кључ. Ове чињенице су audit-оване
-у [матрици доказа](../../research/pir/evidence-matrix.md).
+у [матрици доказа](research/evidence-matrix.md).
 
 ## 3.4. Потврђена ограничења платформе
 
@@ -300,7 +300,7 @@ S1 описује запослену особу којој су цена и ло
 буџети изводе се из расподеле огласа тако да после hard filters остане 12–18
 кандидата, а затим се потврђују пилотом.
 Ниједан оглас не сме доминирати по свим критеријумима. Пуна schema је у
-[спецификацији сценарија](../../research/pir/scenarios.md).
+[спецификацији сценарија](research/scenarios.md).
 
 ## 5.2. Независна relevance методологија
 
@@ -347,7 +347,7 @@ A — базну претрагу без preference rankinga — и B — цел
 су независна relevance
 изабраног огласа и број јединствено отворених огласа. Секундарне су време,
 успешност, SUS, појединачне оцене разумљивости, појединачне оцене поверења и
-отворени коментар. Инструмент је у [прилогу](../../research/pir/instruments.md).
+отворени коментар. Инструмент је у [прилогу](research/instruments.md).
 
 ## 5.5. План анализе
 
@@ -391,7 +391,7 @@ Baseline је покушан 3. септембра 2026. на Linux 6.18.35 x86_
 | recommendation/search endpoint мере | апликација и dataset нису доступни | није извршено |
 
 Репродуктивне команде, потребно окружење и очекивани формат су у
-[`technical-baseline.md`](../../research/pir/technical-baseline.md). Ова верзија
+[`technical-baseline.md`](research/technical-baseline.md). Ова верзија
 не изводи performance закључак из статичког кода.
 
 # 7. Планирана емпиријска евалуација
@@ -447,7 +447,7 @@ marketplace атрибуте, hard filters, preference модел, верна о
 # 11. Литература
 
 Сви извори у списку су употребљени у тексту; детаљи провере су у
-[`literature-matrix.md`](../../research/pir/literature-matrix.md).
+[`literature-matrix.md`](research/literature-matrix.md).
 Цитирање прати форму из приложеног примера PIR-а и факултетске презентације:
 Markdown fusnota при првом релевантном исказу садржи аутора, годину, пун наслов,
 часопис/зборник или издавача, volume/issue и стране када постоје, те DOI или
@@ -483,7 +483,7 @@ Markdown fusnota при првом релевантном исказу садр�
 # 12. Прилози
 
 Прилоге верзије 0.1 чине: празна schema dataset-а и rater образац у
-[`scenarios.md`](../../research/pir/scenarios.md), задаци, SUS/UX инструмент и
-обавезне тачке сагласности у [`instruments.md`](../../research/pir/instruments.md),
-технички лог у [`technical-baseline.md`](../../research/pir/technical-baseline.md)
+[`scenarios.md`](research/scenarios.md), задаци, SUS/UX инструмент и
+обавезне тачке сагласности у [`instruments.md`](research/instruments.md),
+технички лог у [`technical-baseline.md`](research/technical-baseline.md)
 и интерна матрица доказа. Попуњени одговори намерно не постоје.

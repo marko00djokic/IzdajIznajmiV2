@@ -17,7 +17,7 @@ dokument; on dalje rutira prema vrsti zadatka.
 
 | Oblast | Šta sadrži | Početni dokument |
 | --- | --- | --- |
-| `01-project` | proizvod, uloge, glossary, journey-i, ograničenja | [Project indeks](01-project/README.md) |
+| `01-project` | proizvod, uloge, glossary, journey-i, ograničenja i PIR | [Project indeks](01-project/README.md) |
 | `02-architecture` | komponente, data model, code map, ADR i izvori istine | [Architecture indeks](02-architecture/README.md) |
 | `03-development` | quick start, Docker/native rad, servisi, env, doc pravila | [Development indeks](03-development/README.md) |
 | `04-features` | aktivni domenski i security dokumenti | [Feature indeks](04-features/README.md) |
@@ -32,6 +32,7 @@ dokument; on dalje rutira prema vrsti zadatka.
 | Želim da… | Otvori |
 | --- | --- |
 | razumem korisnike i poslovne tokove | [uloge i glossary](01-project/roles-and-glossary.md), [journey-i](01-project/user-journeys.md) |
+| pronađem primenjeni istraživački rad | [PIR indeks](01-project/pir/README.md) |
 | pronađem kod za feature | [code map](02-architecture/code-map.md), zatim odgovarajući [feature doc](04-features/README.md) |
 | vidim šta nije završeno | [known limitations](01-project/known-limitations.md) i [roadmap](08-roadmap/README.md) |
 | pokrenem lokalni stack | [quick start](03-development/quick-start.md) |
