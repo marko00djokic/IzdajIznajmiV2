@@ -46,6 +46,7 @@ u `backend/`.
 | Deploy/incident | `docs/07-operations/` i `ops/AGENTS.md` | compose production, `ops/` | runbook verifikacija |
 | Test/QA/UAT | `docs/06-testing/README.md` | `backend/tests`, `frontend/tests`, `frontend/e2e` | odgovarajuća command matrica |
 | Roadmap/nastavak | `.ai/memory/project-status.md`, `docs/08-roadmap/` | povezani kod i issue kontekst | proveri status prema kodu |
+| PIR i akademski rad | `docs/01-project/pir/AGENTS.md`, zatim `pir-plan.md` | PIR rukopis i `research/` prilozi | provere izvora ili dijagrama prema zadatku |
 | Dokumentacija | `docs/AGENTS.md` | `docs/README.md`, kanonski domenski doc | `php ops/check-docs-links.php` |
 
 ## Obavezni protokol pre izmene
