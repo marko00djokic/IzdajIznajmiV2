@@ -80,3 +80,15 @@ driver`; to je ograničenje lokalnog okruženja, ne pad poslovne logike. Prethod
 nalaz `ordered_imports` u `backend/bootstrap/app.php` je ispravljen. Puni
 suite potvrđuje postojeći API u SQLite test okruženju, a ne performanse,
 PostgreSQL/Meilisearch ponašanje ili relevantnost rangiranja.
+
+## Ciljana provera pri uređivanju PIR-a — 23. oktobar 2026.
+
+Na `HEAD` commit-u `abe0d9e468225bff9bcfe7041cc27c34410c7979` sa
+radnim izmenama PIR dokumentacije pokrenuto je u `backend/`:
+
+`php artisan test --filter='(PirOfflineEvaluatorTest|PirOfflineEvaluateCommandTest)'`
+
+Ishod: **11 passed, 524 assertions**, trajanje 0,25 s. Testovi ne zahtevaju
+bazu. Ovo je novopokrenuta ciljna provera; rezultat 23/564, puni suite
+164/1132 i `pint` u tabeli iznad ostaju istorijski baseline, a ne provere
+ponovljene u ovom krugu. Nema novih ocena relevantnosti ni merenja javnog API-ja.

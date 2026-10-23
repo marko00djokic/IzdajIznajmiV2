@@ -1,11 +1,11 @@
-# Primenjeni istraživački rad — verzija 0.2
+# Примењени истраживачки рад — верзија 0.2
 
-> **Status:** tehnički i metodološki nacrt za mentorski pregled; nije za formalnu predaju  
-> **Datum ciljane provere:** 23. oktobar 2026.  
-> **Presek koda:** `1f39d57315bb674b68d9fab7f07c411f1695a054` i radno stablo opisano u [novom baseline-u](research/technical-baseline-2026-09-23.md)  
-> **Implementacija:** lokalni offline hibrid i CLI postoje; javni API i UI ih ne izlažu  
-> **Empirijski status:** nema nezavisnih relevance ocena, pilota, korisničkih rezultata ni zaključka o H1–H3  
-> **Granica:** dugoročni najam u Srbiji je predmet rada, ali sintetički ulaz nema polje minimalnog trajanja najma
+> **Статус:** технички и методолошки нацрт за менторски преглед; није за формалну предају
+> **Датум циљане провере:** 23. октобар 2026.
+> **Пресек кода:** `1f39d57315bb674b68d9fab7f07c411f1695a054` и радно стабло описано у [техничком baseline-у](research/technical-baseline-2026-09-23.md)
+> **Имплементација:** локални offline хибрид и CLI постоје; јавни API и UI их не излажу
+> **Емпиријски статус:** нема независних оцена релевантности, пилота, корисничких резултата ни закључка о H1–H3
+> **Граница:** дугорочни најам у Србији је предмет рада, али синтетички улаз нема поље минималног трајања најма
 
 > **Aktuelni prioritet:** довршити технички рукопис. Прикупљање података од
 > тест корисника остаје отворено завршно питање; обим хипотеза за предају треба
@@ -38,6 +38,40 @@
 предаје ако га правила установе захтевају.
 
 ---
+
+# Резиме
+
+Рад испитује техничку изводљивост подршке тражиоцу при избору уже листе
+смештаја за дугорочни најам у Србији. Постојећа платформа има претрагу и
+правилима дефинисане препоруке. За локални оглед направљен је издвојени
+евалуатор који на истим кандидатима пореди proxy редослед по свежини,
+постојећу фиксну хеуристику без продукционог прикупљања кандидата и хибрид
+тврдих филтера, експлицитних тежина и синтетичког понашајног профила.
+Замрзнути скуп садржи 30 синтетичких огласа; два сценарија дају 16 и 13
+кандидата. Листе се разликују, а локалне провере показују детерминистичан
+прорачун у дефинисаном окружењу. Пошто независне оцене релевантности и
+испитивање корисника нису спроведени, не може се закључити који редослед
+боље одговара стварним потребама, нити потврдити хипотезе H1–H3. Дат је
+протокол за касније вредновање, уз јасно одвајање постојећег система,
+локалног огледа и могућег развоја у мастер раду.
+
+**Кључне речи:** подршка одлучивању; издавање смештаја; вишекритеријумско
+рангирање; препоручивање; offline евалуација; објашњивост.
+
+# Садржај
+
+1. Увод
+2. Теоријске основе и сродна истраживања
+3. Анализа постојећег система
+4. Пројектовање унапређене подршке
+5. Истраживачки материјал и методологија
+6. Технички резултати
+7. Планирана емпиријска евалуација
+8. Анализа стручног доприноса
+9. Ограничења и претње валидности
+10. Закључак и даљи рад
+11. Литература
+12. Прилози
 
 # 1. Увод
 
@@ -107,14 +141,16 @@ offline ranking протокол и мало експлоративно within-s
 
 ## 2.1. DSS и вишекритеријумско одлучивање
 
-Рани оквир Gorry-а и Scott Morton-а разликује структуиране и
-полуструктурисане управљачке одлуке, док Keen и Scott Morton наглашавају
-спрегу доносиоца одлуке и рачунарског модела.[^1][^2] Избор смештаја припада
-другој групи: део захтева је дискретан, а део зависи од личног trade-off-а.
+Рад Gorry-а и Scott Morton-а и књига Keen-а и Scott Morton-а представљају
+ране изворе о системима за подршку одлучивању.[^1][^2] Избор смештаја овде
+посматрамо као делимично структуриран задатак: део захтева је дискретан,
+а део зависи од личног односа између критеријума. Ова класификација је
+ауторско полазиште, не емпиријски налаз тих извора.
 
-AHP изводи приоритете из парних поређења,[^3] а TOPSIS рангира по односу према
-идеалном и анти-идеалном решењу.[^4] Компаративна литература упозорава да избор
-нормализације и методе може променити поредак.[^5] За кратак web задатак
+AHP изводи приоритете из парних поређења.[^3] Hwang и Yoon систематизују
+методе вишекритеријумског одлучивања,[^4] а Triantaphyllou их теоријски и
+емпиријски пореди.[^5] Избор начина нормализације и агрегирања зато треба
+документовати као пројектну одлуку. За кратак web задатак
 предлаже се лакше објашњива пондерисана сума, али тек после некомпензаторних
 филтера. Цена испод буџета не сме надокнадити одсуство обавезног интернета.
 
@@ -136,28 +172,32 @@ Laravel имплементација такође примењује фиксн�
 
 Објашњења могу служити транспарентности, исправљању, ефикасности, поверењу и
 прихватању, али оптимизација уверљивости није исто што и верно објашњење.[^13]
-Survey и рани експеримент показују да формат објашњења утиче на начин на који
-корисник процењује препоруку.[^14][^15] Bilgic и Mooney посебно раздвајају
+Рани преглед пописује објашњења у препоручивању,[^14] а експеримент Herlocker-а
+и сарадника пореди различите приказе исте MovieLens препоруке и бележи
+различито прихватање.[^15] Bilgic и Mooney посебно раздвајају
 задовољство од промотивног ефекта.[^16] Зато разлог у предложеном систему мора
 проистећи из стварно коришћеног доприноса, без маркетиншког накнадног текста.
 
-Knijnenburg-ов модел UX-а и Pu-ов оквир показују да објективно понашање,
-перцепција система и искуство нису заменљиве мере.[^11][^12] H3 стога одвојено
-анализира SUS, појединачне ставке разумљивости и појединачне ставке поверења.
+Knijnenburg-ов модел UX-а раздваја објективне и субјективне конструкте.[^11]
+Pu и сарадници објавили су засебан оквир усредсређен на корисника, али његов
+садржај у овој провери није био доступан.[^12] H3 стога одвојено анализира
+SUS, појединачне ставке разумљивости и појединачне ставке поверења.
 
 ## 2.4. Избор некретнине и смештаја
 
-Ball-ова примена AHP-а на избор куће показује природну вишекритеријумску
-структуру домена.[^17] Емпиријски housing радови показују да
-важност цене, локације, величине и карактеристика варира по групи и односу
-особе и места.[^18][^19] Скор зато није гаранција квалитета некретнине: служи
+Примена AHP-а на избор куће коју описују Ball и Srinivasan показује природну вишекритеријумску
+структуру домена.[^17] Рад Opoku-а и Abdul-Muhmin-а описује разлике у стамбеним атрибутима код
+испитаника са нижим примањима у Саудијској Арабији; Sirgy и сарадници
+указују на симболичке, поред функционалних, аспекте избора дома. Ове
+налазе не преносимо непосредно на дугорочни најам у Србији.[^18][^19] Скор зато није гаранција квалитета некретнине: служи
 само за ужу листу пре провере, разговора и обиласка.
 
 ## 2.5. Евалуација
 
 Zangerle и Bauer систематизују offline, online и user-study перспективе,[^10]
 а Shani и Gunawardana показују да избор метрике зависи од задатка.[^23]
-`nDCG` подржава graded relevance и награђује релевантне ставке при врху.[^22]
+`nDCG` подржава степеновану релевантност и већу тежину ставки при врху листе;
+у овом раду служи као планирана мера, не као израчунат резултат.[^10][^22]
 SUS је десетоставни инструмент чији трансформисани резултат 0–100 није
 проценат; његова емпиријска употреба захтева опрезно тумачење.[^20][^21]
 Са 10–20 учесника inferential power је ограничен, па су дескриптивни приказ и
@@ -220,12 +260,39 @@ chat и notifications задржавају polling fallback. Production-like Com
 
 ## 4.1. Архитектура и ток података
 
+Слика 1 раздваја постојећи јавни ток од локалне CLI провере и од предложене
+корисничке варијанте. За разлику од јавног `RecommendationService`, локални
+евалуатор не чита продукциону базу и није позван из руте.
+
+![Слика 1 — Архитектура постојећег система и локалног огледа](diagrams/arhitektura.svg)
+
+**Слика 1. Архитектура постојећег система и локалног огледа.** Извор:
+ауторски дијаграм према `frontend/src/services/realApi.ts`,
+`backend/routes/api.php`, `backend/app/Http/Controllers/RecommendationsController.php`,
+`backend/app/Services/RecommendationService.php`,
+`backend/app/Services/LegacyRecommendationScorer.php` и
+`backend/app/Services/PirOfflineEvaluator.php`, пресек кода
+`1f39d57315bb674b68d9fab7f07c411f1695a054`, провера 23. 10. 2026.
+Уређив [извор](diagrams/arhitektura.mmd).
+
 Локални offline ток учитава замрзнути JSON и manifest, проверава SHA-256 пре
 израчунавања и примењује сценаријске hard filters једном. Исти кандидатни скуп
 улази у базни proxy, издвојену фиксну хеуристику и хибрид. JSON резултат чува
 верзије, параметре, потпуне rank листе, доприносе и највише три идентификатора
 критеријума као разлоге; временска поља су издвојена у `run_metadata`.
 Идентификатори још нису кориснички текст. Продукциони API не позива хибрид.
+Слика 2 приказује да се три листе добијају из истог скупа после тврдих
+филтера; предлог независног оцењивања је засебан следећи корак.
+
+![Слика 2 — Ток замрзнутих података](diagrams/tok-podataka.svg)
+
+**Слика 2. Ток замрзнутих података у локалном поређењу.** Извор: ауторски
+дијаграм према `backend/app/Console/Commands/PirOfflineEvaluateCommand.php`,
+`backend/app/Services/PirOfflineEvaluator.php`, `research/dataset-v1.json`,
+`research/scenarios-v1.json`, `research/manifest-v1.json` и
+`research/offline-evaluation-v1.json`, пресек кода
+`1f39d57315bb674b68d9fab7f07c411f1695a054`, провера 23. 10. 2026.
+Уређив [извор](diagrams/tok-podataka.mmd).
 
 **Табела 1. Разграничење стања (извор: аутор, изведено из кода на наведеном commit-у).**
 
@@ -286,6 +353,20 @@ score-only контроли. За корисничку варијанту B по
 сада нема улаз за експлицитне тежине.
 
 ## 4.5. Ток обраде и граница интеграције
+
+На слици 3 је поступак локалног рангирања: после заједничких тврдих
+филтера три гране користе различите кључеве, а хибрид чува доприносе
+критеријума. Пунктир означава тек предложено корисничко вредновање.
+
+![Слика 3 — Поступак локалног рангирања](diagrams/postupak-rangiranja.svg)
+
+**Слика 3. Поступак локалног рангирања.** Извор: ауторски дијаграм према
+`backend/app/Services/PirOfflineEvaluator.php`,
+`backend/app/Services/LegacyRecommendationScorer.php`,
+`backend/tests/Unit/PirOfflineEvaluatorTest.php` и
+`research/offline-evaluation-v1.json`, пресек кода
+`1f39d57315bb674b68d9fab7f07c411f1695a054`, провера 23. 10. 2026.
+Уређив [извор](diagrams/postupak-rangiranja.mmd).
 
 Улаз експеримента чине три одвојене целине: синтетички огласи, сценарији са
 правилима и тежинама, те manifest са контролним збировима. Провера интегритета
@@ -409,34 +490,103 @@ effect size могу се додати уз интервал неизвесно�
 непопуњени инструменти, analysis скрипта и репродуктивни технички резултати.
 Raw одговори, снимци и потписане сагласности не смеју бити објављени.
 
-# 6. Tehnički rezultati verzije 0.2
+# 6. Технички резултати верзије 0.2
 
-Istorijski pokušaj iz 0.1, kada Laravel zavisnosti nisu bile dostupne, ostaje
-u [baseline-u verzije 0.1](research/technical-baseline.md). Za ovaj presek
-izvršeni su lokalna offline komanda, ciljane provere i puni backend suite sa
-privremeno učitanim `pdo_sqlite`. Korišćen je sintetički ulaz; tržišni podaci,
-produkciona baza i javni recommendation endpoint nisu menjani.
+Историјски покушај из 0.1, када Laravel зависности нису биле доступне, остаје
+у [baseline-у верзије 0.1](research/technical-baseline.md). За овај пресек
+извршени су локална offline команда, циљане провере и пуни backend suite са
+привремено учитаним `pdo_sqlite`. Коришћен је синтетички улаз; тржишни подаци,
+продукциона база и јавна рута препорука нису мењани.
 
-**Tabela 2. Ponovljivost i provere (izvor: autor; komande i ograničenja u [tehničkom baseline-u](research/technical-baseline-2026-09-23.md)).**
+**Табела 2. Поновљивост и провере.** Извор: аутор; команде и ограничења у
+`research/technical-baseline-2026-09-23.md`.
 
-| Provera | Dobijeni rezultat | Granica |
+| Провера | Добијени резултат | Граница |
 | --- | --- | --- |
-| Zamrznuti ulaz | 30 sintetičkih oglasa; manifest proverava SHA-256 | nema tržišne reprezentativnosti |
-| Hard filters | S1: 16; S2: 13; nula prekršaja u ručnoj proveri | trajanje najma nije polje ulaza |
-| Tri potpune rank liste | bazni proxy, score-only kontrola i hibrid imaju iste kodove | redosled sam po sebi nije relevance ocena |
-| Dva pokretanja | isti sadržaj osim `run_metadata` | vreme izvršavanja nije performance benchmark |
-| Ciljani PIR/API testovi | 23 passed, 564 assertions | SQLite test okruženje |
-| Puni backend suite | 164 passed, 1132 assertions | bez PostgreSQL/Meilisearch e2e provere |
-| `./vendor/bin/pint --test` | prolaz, 388 fajlova | stilska provera |
+| Замрзнути улаз | 30 синтетичких огласа; manifest проверава SHA-256 | нема тржишне репрезентативности |
+| Тврди филтери | S1: 16; S2: 13; нула прекршаја у ручној провери | трајање најма није поље улаза |
+| Три потпуне rank листе | базни proxy, score-only контрола и хибрид имају исте кодове | редослед сам по себи није оцена релевантности |
+| Два покретања | исти садржај осим `run_metadata` | време извршавања није performance benchmark |
+| Циљани PIR/API тестови | 23 passed, 564 assertions | SQLite тест окружење |
+| Пуни backend suite | 164 passed, 1132 assertions | без PostgreSQL/Meilisearch e2e провере |
+| `./vendor/bin/pint --test` | пролаз, 388 фајлова | стилска провера |
 
-Za S1 prvih pet kodova su: bazni `001, 002, 003, 004, 005`, heuristika
-`007, 010, 004, 011, 005`, hibrid `004, 007, 010, 001, 002`. Za S2 su:
-bazni `002, 003, 004, 006, 007`, heuristika `007, 010, 011, 004, 006`,
-hibrid `004, 007, 016, 010, 011`. Svi kodovi imaju prefiks `PIR-`.
-Razlika u redosledu pokazuje da komparatori nisu identični, ali bez nezavisnih
-ocena nema dokaza da je jedan relevantniji. Ovaj rezultat zato ne potvrđuje H1.
+Бројеви 23/564, 164/1132 и 388 у табели су **историјски baseline од
+23. 10. 2026.**, забележен уз пресек кода `1f39d57315bb674b68d9fab7f07c411f1695a054`
+и тадашње радно стабло; нису поново мерени при овом прелому. Нова циљана
+провера на commit-у `abe0d9e468225bff9bcfe7041cc27c34410c7979` са
+текућим изменама, командом из `backend/`
+`php artisan test --filter='(PirOfflineEvaluatorTest|PirOfflineEvaluateCommandTest)'`,
+дала је **11 passed, 524 assertions** 23. 10. 2026. Она проверава локални
+евалуатор и CLI, али не укључује API, базу ни јавни UI.
 
-## 6.1. Пример прорачуна и тумачење разлике
+За S1 првих пет кодова су: базни `001, 002, 003, 004, 005`, хеуристика
+`007, 010, 004, 011, 005`, хибрид `004, 007, 010, 001, 002`. За S2 су:
+базни `002, 003, 004, 006, 007`, хеуристика `007, 010, 011, 004, 006`,
+хибрид `004, 007, 016, 010, 011`. Сви кодови имају префикс `PIR-`.
+Разлика у редоследу показује да компаратори нису идентични, али без независних
+оцена нема доказа да је један релевантнији. Овај резултат зато не потврђује H1.
+
+## 6.1. Поређење три редоследа по сценарију
+
+**Табела 3. Позиције одабраних кандидата.** Извор: ауторски прорачун из
+`research/offline-evaluation-v1.json`, проверен према
+`PirOfflineEvaluator::evaluate` и
+`research/offline-evaluation-log-2026-09-23.md`.
+
+| Сценарио | Оглас | Proxy свежине | Фиксна хеуристика | Хибрид, λ=0,25 |
+| --- | --- | ---: | ---: | ---: |
+| S1 | `PIR-001` | 1 | 15 | 4 |
+| S1 | `PIR-004` | 4 | 3 | 1 |
+| S1 | `PIR-007` | 7 | 1 | 2 |
+| S1 | `PIR-010` | 10 | 2 | 3 |
+| S2 | `PIR-002` | 1 | 13 | 6 |
+| S2 | `PIR-004` | 3 | 4 | 1 |
+| S2 | `PIR-007` | 5 | 1 | 2 |
+| S2 | `PIR-016` | 12 | 6 | 3 |
+
+У S1 proxy ставља `PIR-001` и `PIR-002` на врх јер су најновији по
+`published_at`; фиксна хеуристика их спушта на 15. и 16. место, док
+хибрид додељује 4. и 5. место. Фиксна хеуристика даје по 85 поена
+огласима `PIR-007` и `PIR-010`; секундарни кључ `listing_code ASC`
+поставља `007` испред `010`. Хибрид даје `PIR-004` скор `84,209596`,
+испред `007` са `81,452020` и `010` са `78,694444`. Ова промена следи
+из сценаријских тежина и нормализованих корисности, а не из независно
+утврђеног квалитета смештаја.
+
+У S2 proxy ставља `PIR-002` на прво место, али га фиксна хеуристика
+ставља на последње, 13. место; хибрид га смешта на 6. место. Три огласа
+`PIR-007`, `PIR-010` и `PIR-011` имају по 80 хеуристичких поена, па
+редослед међу њима опет зависи од кода. Хибрид поставља `PIR-004` на
+прво место са `81,163889`, затим `007` са `80,816667`, а `PIR-016`
+подиже са 12. proxy и 6. хеуристичког на 3. место са `71,747222`.
+Разлика између `PIR-016` и четвртог `PIR-010` износи само `0,055555`
+поена у приказаном скору, што показује да позицију треба читати уз скор.
+
+Базни редослед је **proxy**, не снимак јавне претраге: локални
+`published_at DESC` приближава `created_at DESC`, а није исто поље нити
+мери стварни search backend. Score-only контрола позива исти
+`LegacyRecommendationScorer` као постојећи API, али прима замрзнути
+сценаријски профил и датум `as_of`; не извршава продукционо прикупљање
+кандидата, не додељује `source` бонусе и нема cache. Зато позиције из
+табеле нису очекивани јавни `GET /api/v1/recommendations` одговор.
+Хибрид је локални адаптер: пет тежина и `λ=0,25` задају скор,
+недостајући меки атрибут прерасподељује тежине на доступне, а редослед
+разрешава незаокруженим скором, бројем недостајућих атрибута и кодом.
+
+Контроле показују да се на истих 16 и 13 кандидата могу поновљиво
+израчунати три потпуне листе. Manifest проверава SHA-256 улаза; два
+историјска покретања дала су једнак JSON ван `run_metadata`. Тестови
+евалуатора проверавају валидацију, паритет за фиксни scorer, гране
+формуле, изједначења и недостајуће податке. То је проверљив технички
+допринос: изолација поређења и траг доприноса сваког критеријума.
+Провере не доказују репрезентативност синтетичких огласа, релевантност
+редоследа, рад PostgreSQL/Meilisearch тока, брзину јавног API-ја нити
+корисничко разумевање разлога. Осетљивост на `λ=0` и `λ=0,50` мења
+појединачне позиције, нарочито прва два места у S2 при `λ=0,50`, али
+без независних оцена није мера побољшања. H1 остаје непроверена.
+
+## 6.2. Пример прорачуна и тумачење разлике
 
 За сценарио S1 експлицитна тежина цене је `0,35`, а тежина из понашајног
 профила `0,25`. Са закључаним `λ=0,25`, коначна тежина цене је
@@ -502,7 +652,7 @@ relevance оцене за H1 када се обезбеде оцењивачи. 
 продукционо прикупљање кандидата нису тиме измерени. Издвојени разлози су
 идентификатори критеријума, не проверено разумљива корисничка објашњења.
 
-# 10. Zaključak i dalji rad
+# 10. Закључак и даљи рад
 
 Верзија 0.2 додаје поновљив локални експеримент претходно дефинисаном
 pre-experimental протоколу. Замрзнути улаз, провере интегритета, исти
@@ -521,36 +671,36 @@ pre-experimental протоколу. Замрзнути улаз, провере
 Сви извори у списку су употребљени у тексту; детаљи провере су у
 [`literature-matrix.md`](research/literature-matrix.md).
 Цитирање прати форму из приложеног примера PIR-а и факултетске презентације:
-Markdown fusnota при првом релевантном исказу садржи аутора, годину, пун наслов,
-часопис/зборник или издавача, volume/issue и стране када постоје, те DOI или
-стабилан URL. При DOCX прелому fusnote се постављају на дно стране, а главни
-текст се обликује као у примеру: Times New Roman 12 pt, проред 1,5 и маргине
-2,5 cm. Коначна пагинација, садржај и прелом не мењају библиографске податке.
+Фуснота при првом релевантном исказу садржи аутора, годину, пун наслов,
+часопис/зборник или издавача, број и стране када постоје, те DOI или
+стабилан URL. У извозном DOCX/PDF документу фусноте су на дну стране, а главни
+текст је обликован као у примеру: Times New Roman 12 pt, проред 1,5 и маргине
+2,5 cm. Коначна пагинација не мења библиографске податке.
 
 [^1]: Gorry, G. A. и Scott Morton, M. S. (1971), „A Framework for Management Information Systems“, *Sloan Management Review*, 13(1), 55–70, https://sloanreview.mit.edu/article/a-framework-for-management-information-systems/.
 [^2]: Keen, P. G. W. и Scott Morton, M. S. (1978), *Decision Support Systems: An Organizational Perspective*, Addison-Wesley, ISBN 9780201036676.
 [^3]: Saaty, T. L. (1977), „A Scaling Method for Priorities in Hierarchical Structures“, *Journal of Mathematical Psychology*, 15(3), 234–281, https://doi.org/10.1016/0022-2496(77)90033-5.
-[^4]: Hwang, C.-L. и Yoon, K. (1981), *Multiple Attribute Decision Making*, Springer, https://doi.org/10.1007/978-3-642-48318-9.
+[^4]: Hwang, C.-L. и Yoon, K. (1981), *Multiple Attribute Decision Making: Methods and Applications: A State-of-the-Art Survey*, Springer, LNEMS 186, https://doi.org/10.1007/978-3-642-48318-9.
 [^5]: Triantaphyllou, E. (2000), *Multi-Criteria Decision Making Methods: A Comparative Study*, Springer, https://doi.org/10.1007/978-1-4757-3157-6.
-[^6]: Adomavicius, G. и Tuzhilin, A. (2005), „Toward the Next Generation of Recommender Systems“, *IEEE Transactions on Knowledge and Data Engineering*, 17(6), 734–749, https://doi.org/10.1109/TKDE.2005.99.
+[^6]: Adomavicius, G. и Tuzhilin, A. (2005), „Toward the Next Generation of Recommender Systems: A Survey of the State-of-the-Art and Possible Extensions“, *IEEE Transactions on Knowledge and Data Engineering*, 17(6), 734–749, https://doi.org/10.1109/TKDE.2005.99.
 [^7]: Burke, R. (2002), „Hybrid Recommender Systems: Survey and Experiments“, *User Modeling and User-Adapted Interaction*, 12, 331–370, https://doi.org/10.1023/A:1021240730564.
 [^8]: Burke, R. (2007), „Hybrid Web Recommender Systems“, у *The Adaptive Web*, 377–408, Springer, https://doi.org/10.1007/978-3-540-72079-9_12.
 [^9]: Ricci, F., Rokach, L. и Shapira, B. (ур.) (2022), *Recommender Systems Handbook*, 3. изд., Springer, https://doi.org/10.1007/978-1-0716-2197-4.
 [^10]: Zangerle, E. и Bauer, C. (2022), „Evaluating Recommender Systems: Survey and Framework“, *ACM Computing Surveys*, 55(8), article 170, 1–38, https://doi.org/10.1145/3556536.
 [^11]: Knijnenburg, B. P., Willemsen, M. C., Gantner, Z., Soncu, H. и Newell, C. (2012), „Explaining the User Experience of Recommender Systems“, *User Modeling and User-Adapted Interaction*, 22, 441–504, https://doi.org/10.1007/s11257-011-9118-4.
 [^12]: Pu, P., Chen, L. и Hu, R. (2011), „A User-Centric Evaluation Framework for Recommender Systems“, *RecSys ’11*, 157–164, https://doi.org/10.1145/2043932.2043962.
-[^13]: Tintarev, N. и Masthoff, J. (2012), „Evaluating the Effectiveness of Explanations for Recommender Systems“, *User Modeling and User-Adapted Interaction*, 22, 399–439, https://doi.org/10.1007/s11257-011-9117-5.
+[^13]: Tintarev, N. и Masthoff, J. (2012), „Evaluating the Effectiveness of Explanations for Recommender Systems: Methodological Issues and Empirical Studies on the Impact of Personalization“, *User Modeling and User-Adapted Interaction*, 22, 399–439, https://doi.org/10.1007/s11257-011-9117-5.
 [^14]: Tintarev, N. и Masthoff, J. (2007), „A Survey of Explanations in Recommender Systems“, *ICDE Workshops*, 801–810, https://doi.org/10.1109/ICDEW.2007.4401070.
 [^15]: Herlocker, J. L., Konstan, J. A. и Riedl, J. (2000), „Explaining Collaborative Filtering Recommendations“, *CSCW ’00*, 241–250, https://doi.org/10.1145/358916.358995.
-[^16]: Bilgic, M. и Mooney, R. J. (2005), „Explaining Recommendations: Satisfaction vs. Promotion“, *Beyond Personalization Workshop*, https://www.cs.utexas.edu/~ml/papers/bilgic-iui-ws-05.pdf.
-[^17]: Ball, J. (1994), „The Use of the Analytic Hierarchy Process in the Selection of a House“, *Journal of Real Estate Finance and Economics*, 9, 69–85, https://doi.org/10.1007/BF01153589.
+[^16]: Bilgic, M. и Mooney, R. J. (2005), „Explaining Recommendations: Satisfaction vs. Promotion“, *Beyond Personalization Workshop*, https://www.cs.utexas.edu/~ai-lab/pub-view.php?PubID=51494.
+[^17]: Ball, J. и Srinivasan, V. C. (1994), „Using the Analytic Hierarchy Process in House Selection“, *Journal of Real Estate Finance and Economics*, 9, 69–85, https://doi.org/10.1007/BF01153589.
 [^18]: Opoku, R. A. и Abdul-Muhmin, A. G. (2010), „Housing Preferences and Attribute Importance among Low-income Consumers in Saudi Arabia“, *Habitat International*, 34(2), 219–227, https://doi.org/10.1016/j.habitatint.2009.09.006.
-[^19]: Sirgy, M. J., Grzeskowiak, S. и Su, C. (2005), „Explaining Housing Preference and Choice“, *Journal of Business Research*, 58(3), 329–339, https://doi.org/10.1016/S0148-2963(03)00122-7.
-[^20]: Brooke, J. (1996), „SUS: A ‘Quick and Dirty’ Usability Scale“, у *Usability Evaluation in Industry*, 189–194, Taylor & Francis.
+[^19]: Sirgy, M. J., Grzeskowiak, S. и Su, C. (2005), „Explaining Housing Preference and Choice: The Role of Self-Congruity and Functional Congruity“, *Journal of Housing and the Built Environment*, 20(4), 329–347, https://doi.org/10.1007/s10901-005-9020-7.
+[^20]: Brooke, J. (1996), „SUS: A ‘Quick and Dirty’ Usability Scale“, у *Usability Evaluation in Industry*, 189–194, Taylor & Francis; текст: https://digital.ahrq.gov/sites/default/files/docs/survey/systemusabilityscale%2528sus%2529_comp%255B1%255D.pdf.
 [^21]: Bangor, A., Kortum, P. T. и Miller, J. T. (2008), „An Empirical Evaluation of the System Usability Scale“, *International Journal of Human–Computer Interaction*, 24(6), 574–594, https://doi.org/10.1080/10447310802205776.
 [^22]: Järvelin, K. и Kekäläinen, J. (2002), „Cumulated Gain-Based Evaluation of IR Techniques“, *ACM Transactions on Information Systems*, 20(4), 422–446, https://doi.org/10.1145/582415.582418.
 [^23]: Shani, G. и Gunawardana, A. (2011), „Evaluating Recommendation Systems“, у *Recommender Systems Handbook*, 257–297, Springer, https://doi.org/10.1007/978-0-387-85820-3_8.
-[^24]: Cohen, J. (1988), *Statistical Power Analysis for the Behavioral Sciences*, 2. изд., Routledge, https://doi.org/10.4324/9780203771587.
+[^24]: Cohen, J. (1988), *Statistical Power Analysis for the Behavioral Sciences*, 2. изд., Routledge, ISBN 9780805802832; DOI https://doi.org/10.4324/9780203771587 односи се на касније електронско издање.
 
 # 12. Прилози
 

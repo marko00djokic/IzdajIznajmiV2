@@ -1,0 +1,21 @@
+flowchart TB
+  subgraph L[ЛОКАЛНО ИСПИТАНО — исти кандидати]
+    A[Hard filters] --> P[Proxy: published_at DESC]
+    A --> F[Score-only: фиксни бодови]
+    A --> H[Хибрид: 0,75e + 0,25b<br/>пет корисности; missing → прерасподела<br/>S = 100 × збир; score/missing/код tie-break]
+    P --> J[(Три потпуне листе у JSON)]
+    F --> J
+    H --> J
+  end
+  subgraph I[ИМПЛЕМЕНТИРАНО — јавни API]
+    R[Фиксни scorer и source бонуси]
+  end
+  subgraph N[ПРЕДЛОЖЕНО — мастер рад]
+    E[Читљиви разлози и независне оцене]
+  end
+  classDef local fill:#e7edff,stroke:#3654a5,color:#111;
+  classDef implemented fill:#e5f1e6,stroke:#216b39,color:#111;
+  classDef proposed fill:#fff2dd,stroke:#ad6a00,color:#111;
+  class A,P,F,H,J local;
+  class R implemented;
+  class E proposed;

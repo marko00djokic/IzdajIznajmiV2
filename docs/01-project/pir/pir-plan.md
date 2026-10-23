@@ -54,10 +54,10 @@ zavisi od mentora ili nastavnika. Oznake ne izražavaju procenat napretka.
 | ID | Oblast | Status 23. 10. 2026. | Dokaz sadašnjeg stanja | Uslov za „završeno“ / sledeći korak |
 | --- | --- | --- | --- | --- |
 | T1 | Tehnički offline materijal | **Završeno** | [Dataset, scenariji i manifest](research/README.md), [offline izlaz](research/offline-evaluation-v1.json) i [test baseline](research/technical-baseline-2026-09-23.md): 30 sintetičkih oglasa, S1/S2 sa 16/13 kandidata, tri potpune liste; poslednji zabeleženi ciljani skup 23 testa / 564 asercije. | Završeno za definisani lokalni ogled; ne podrazumeva kvalitet rangiranja, produkcioni API ili trajanje najma. |
-| T2 | Opis rešenja i tehnička analiza u PIR-u | **U toku** | [Poglavlja 3–6 verzije 0.2](pir-verzija-0-2.md) sadrže arhitekturu, metod, primer skora i osnovni presek rank lista. | Razmotriti razlike po oba scenarija, granice baznog proxy-ja i score-only kontrole, ponovljivost i doprinos; uskladiti zaključak, bez tvrdnje o boljoj relevantnosti. |
-| T3 | Dijagrami | **Nije započeto** | U [rukopisu](pir-verzija-0-2.md) nema ugrađenih dijagrama. | Dodati arhitekturu, tok podataka i postupak rangiranja, svaki sa brojem, nazivom, punim izvorom i pozivom iz teksta. |
-| T4 | Literatura i citati | **U toku** | [Rukopis](pir-verzija-0-2.md) koristi 24 izvora i Markdown fusnote; [matrica](research/literature-matrix.md) beleži otvorene bibliografske provere. | Nezavisno proveriti metapodatke i relevantnost svih 24 izvora, pa urediti fusnote po uputstvu. |
-| T5 | Akademska forma i izlazni dokument | **Nije započeto** | Postoji Markdown nacrt; nema finalnog DOCX/PDF PIR-a. | Dodati rezime, ključne reči i sadržaj; ujednačiti tekst; izvesti DOCX/PDF i pregledati fusnote, slike/tabele, paginaciju i obim 20–30 A4 strana. |
+| T2 | Opis rešenja i tehnička analiza u PIR-u | **Završeno** | [Poglavlja 4 i 6 verzije 0.2](pir-verzija-0-2.md) razdvajaju javni tok, lokalni ogled i predlog; pozicije i skorovi za S1/S2 provereni su 23. 10. 2026. prema [zamrznutom izlazu](research/offline-evaluation-v1.json), kodu i logu. Nova ciljna provera na `abe0d9e` sa radnim izmenama: 11 testova / 524 asercije; [baseline](research/technical-baseline-2026-09-23.md) odvaja istorijski puni suite. | Završeno za tehnički rukopis; nezavisna relevantnost i odluka o obimu ostaju O1/O2. |
+| T3 | Dijagrami | **Završeno** | Tri [Mermaid izvora, SVG i PNG izvoza](diagrams/) ugrađena su kao slike 1–3 sa pozivima i punim izvorima u [rukopisu](pir-verzija-0-2.md); izvoz i vizuelni pregled PDF strana 9, 10 i 12 obavljeni 23. 10. 2026. | Završeno za tehnički nacrt; po eventualnoj izmeni rukopisa ponoviti izvoz. |
+| T4 | Literatura i citati | **U toku** | [Matrica](research/literature-matrix.md) beleži proveru svih 24 zapisa 23. 10. 2026: OpenAlex (22 prvobitna tačna poklapanja, L19 razrešen posle ispravke DOI-ja, L1 potvrđen MIT zapisom), dopunski Semantic Scholar i primarne stranice. Puni tekst je pročitan za L10, L15 i L20; apstrakti i izdavački opisi za ostale dostupne izvore, a samo metapodaci za L1–L2, L12, L14, L22 i L24. [Rukopis i fusnote](pir-verzija-0-2.md) ispravljaju L4, L6, L13, L17, L19, L24 i sužavaju tvrdnje prema nivou pristupa. | Pre formalne predaje pribaviti primarne radove za preostale zapise sa samo metapodacima, posebno časopisnu verziju L1 i sadržaj L12; eventualne nove nalaze uneti bez izvođenja detaljnih zaključaka iz kataloškog zapisa. |
+| T5 | Akademska forma i izlazni dokument | **U toku** | [DOCX](pir-za-mentorski-pregled.docx) i [PDF](pir-za-mentorski-pregled.pdf) ponovo izvezeni 23. 10. 2026. iz [ODT-a i skripte](build-pir.py); PDF ima 23 A4 strane, slike 1–3 i tabele pregledane, uklonjena prazna strana pre tabele 3, 24 stvarne fusnote su pri dnu strana, DOCX margine 2,5 cm i TNR 12 pt deklarisani u stilu. | Za doslovni TNR u PDF-u potreban je instaliran licencirani font i novi izvoz (sada Liberation Serif zamena); pre formalne predaje dopuniti potvrđene administrativne podatke i, ako mentor zahteva, sadržaj sa brojevima strana. |
 | O1 | Obim hipoteza i predaja | **Čeka odluku** | [Verzija 0.2](pir-verzija-0-2.md) navodi H1–H3 bez empirijskih zaključaka; ime mentora u organizaciji je prazno. | Sa mentorom/nastavnikom potvrditi obim PIR-a, potrebne rezultate i formalne podatke; tek zatim prilagoditi hipoteze i tražiti odobrenje rukopisa. |
 | O2 | Nezavisne ocene i test korisnika | **Odloženo** | [Instrumenti](research/instruments.md) i protokol postoje, ali nema ocena, pilota ni učesničkih rezultata. | Posle tehničkog rukopisa odlučiti sa mentorom šta pripada PIR-u, a šta master radu; pokrenuti merenja samo za odobreni obim. |
 
@@ -70,8 +70,9 @@ kao kontekst, a ova tabela određuje trenutno stanje i redosled rada.
 
 ### Sledeći zadaci za agenta
 
-Nastavi od otvorenih stavki **T2–T5**: prvo dovrši tehničku analizu i
-dijagrame, zatim proveri literaturu i pripremi izlazni dokument. Stavke
+Nastavi od otvorenih stavki **T4–T5**: dovrši proveru preostalih primarnih
+izvora i finalni prelom posle povratnih informacija mentora. T2 и T3 имају
+проверљиве артефакте из 23. 10. 2026. Ставке
 **O1–O2** razmatraju se po završetku tehničkog rukopisa. Ne prelazi na
 regrutaciju ili A/B istraživanje bez nove odluke o obimu.
 

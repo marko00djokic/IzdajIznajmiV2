@@ -1,0 +1,28 @@
+flowchart TB
+  subgraph I[ИМПЛЕМЕНТИРАНО — јавни ток]
+    direction LR
+    UI[Vue SPA] --> API[GET /api/v1/recommendations]
+    API --> RS[RecommendationService]
+    DB[(Огласи и сигнали)] --> RS
+    RS --> SC[LegacyRecommendationScorer]
+    SC --> OUT[Ранг листа и why]
+  end
+  subgraph L[ЛОКАЛНО ИСПИТАНО — ван јавног API-ја]
+    direction LR
+    F[(Замрзнути JSON)] --> CLI[pir:evaluate]
+    CLI --> EV[PirOfflineEvaluator]
+    EV --> J[(Три листе у JSON)]
+  end
+  subgraph P[ПРЕДЛОЖЕНО — мастер рад]
+    direction LR
+    W[Унос тежина] -.-> NEW[Нови API уговор]
+    NEW -.-> UX[Независна и UX провера]
+  end
+  I ~~~ L
+  L ~~~ P
+  classDef implemented fill:#e5f1e6,stroke:#216b39,color:#111;
+  classDef local fill:#e7edff,stroke:#3654a5,color:#111;
+  classDef proposed fill:#fff2dd,stroke:#ad6a00,color:#111;
+  class UI,API,RS,DB,SC,OUT implemented;
+  class F,CLI,EV,J local;
+  class W,NEW,UX proposed;

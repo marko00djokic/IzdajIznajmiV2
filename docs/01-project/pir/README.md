@@ -11,6 +11,12 @@ rezultati prikupljeni.
 - [Verzija 0.2](pir-verzija-0-2.md) — tehnički i metodološki nacrt sa
   zamrznutim sintetičkim ulazom, lokalnim offline poređenjem i ciljanim
   proverama; nezavisne relevance ocene i korisnički rezultati još ne postoje.
+- [PIR DOCX za mentorski pregled](pir-za-mentorski-pregled.docx) i
+  [PIR PDF](pir-za-mentorski-pregled.pdf) — izvozi rukopisa 0.2 na 23 A4 strane.
+  [ODT polazni dokument](pir-za-mentorski-pregled.odt) nastaje iz
+  [skripte za izvoz](build-pir.py); uređivi [dijagrami](diagrams/) su uz rukopis.
+  DOCX traži Times New Roman, a lokalni PDF koristi Liberation Serif jer
+  Times New Roman nije instaliran na mašini za izvoz.
 - [Verzija 0.1](pir-verzija-0-1.md) — aktuelni celoviti pre-eksperimentalni
   istorijski nacrt, sa naknadnom napomenom o offline prototipu.
 - [Nulta verzija](pir-nulta-verzija.md) — raniji nacrt sa mestima za dopunu.

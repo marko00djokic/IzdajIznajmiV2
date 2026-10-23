@@ -1,0 +1,26 @@
+flowchart TB
+  subgraph L[ЛОКАЛНО ИСПИТАНО — замрзнут синтетички улаз]
+    D[30 огласа: dataset-v1.json] --> C[Провера верзија и SHA-256]
+    S[S1 и S2: scenarios-v1.json] --> C
+    M[manifest-v1.json] --> C
+    C --> H[За сваки сценарио: hard filters]
+    H --> K[Исти кандидати: S1 = 16, S2 = 13]
+    K --> B[Базни proxy: published_at DESC]
+    K --> O[Score-only: фиксна хеуристика]
+    K --> R[Хибрид: λ = 0,25]
+    B --> J[Потпуне листе и параметри: offline JSON]
+    O --> J
+    R --> J
+  end
+  subgraph I[ИМПЛЕМЕНТИРАНО — одвојени јавни ток]
+    DB[(База огласа и сигнала)] --> API[RecommendationService и API]
+  end
+  subgraph P[ПРЕДЛОЖЕНО]
+    J -.-> E[Слепе независне оцене; nDCG@5]
+  end
+  classDef local fill:#e7edff,stroke:#3654a5,color:#111;
+  classDef implemented fill:#e5f1e6,stroke:#216b39,color:#111;
+  classDef proposed fill:#fff2dd,stroke:#ad6a00,color:#111;
+  class D,S,M,C,H,K,B,O,R,J local;
+  class DB,API implemented;
+  class E proposed;
