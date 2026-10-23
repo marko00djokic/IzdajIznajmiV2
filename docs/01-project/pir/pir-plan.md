@@ -4,9 +4,9 @@
 реализована у интегрисаним технологијама“  
 **Predmet u okviru kog se razvija aplikacija:** Programiranje u integrisanim
 tehnologijama  
-**Status:** aktivan plan; nacrt verzije 0.2 i offline tehnički prototip postoje, ali empirijska evaluacija, mentorsko i formalno odobrenje nisu evidentirani<br>
+**Status:** tehnički rukopis je u toku; formalna predaja čeka odluku o obimu i mentorski pregled<br>
 **Datum provere:** 23. oktobar 2026.<br>
-**Presek nacrta:** verzija 0.1 od 3. septembra 2026; najnoviji provereni offline kod na commit-u `1f39d57315bb674b68d9fab7f07c411f1695a054`<br>
+**Aktuelni nacrt:** [verzija 0.2](pir-verzija-0-2.md); tehnički rezultati su zabeleženi na preseku koda `1f39d57315bb674b68d9fab7f07c411f1695a054` i proverama iz [baseline-a](research/technical-baseline-2026-09-23.md)<br>
 **Izvori za ovu fazu:** [primer PIR rada](sources/pir-primer-aleksa-matejic.pdf),
 [prezentacija sa uputstvom](sources/pir-uputstvo-prezentacija-v23-2.pptx),
 [`master-rad-sazetak.md`](master-rad-sazetak.md) i postojeća projektna
@@ -25,20 +25,58 @@ Nepotvrđeni administrativni podaci i otvorene odluke označeni su eksplicitno i
 ne smeju se izmišljati. Plan i sledeća verzija moraju biti usaglašeni sa
 mentorom i predmetnim nastavnikom.
 
-## Status na dan provere
+## Aktuelni prioritet: tehnički rukopis PIR-a
 
-| Oblast | Utvrđeno stanje | Trag |
-| --- | --- | --- |
-| Tekst | Verzija 0.2 je tehnički i metodološki nacrt za mentorski pregled, zasnovan na 0.1; nema empirijske rezultate, potvrđene fusnote za Word niti formalno odobrenje. | [Nacrt](pir-verzija-0-2.md) |
-| Literatura | Matrica sadrži 24 upotrebljena izvora; deo metapodataka traži završnu nezavisnu proveru. | [Matrica literature](research/literature-matrix.md) |
-| Tehnički dokaz | Lokalni offline hibrid, CLI i izdvojeni legacy scorer postoje; 30 sintetičkih oglasa i S1/S2 daju 16/13 kandidata. Ciljani PIR/API testovi prolaze (23/564), pun backend suite prolazi (164/1132), kao i `pint --test`. Produkcioni recommendation API nema novi hibrid. | [Matrica dokaza](research/evidence-matrix.md), [offline log](research/offline-evaluation-log-2026-09-23.md) |
-| Istraživanje | Dataset, manifest i scenariji su zamrznuti kao sintetički tehnički ulaz. Pareto kompromisi su automatski provereni. Nema nezavisnih relevance ocena, `nDCG@5`, pilota ni korisničkih rezultata; trajanje najma nije posebno polje dataset-a. | [Scenariji](research/scenarios.md), [instrumenti](research/instruments.md) |
-| Predaja | Nema DOCX/PDF verzije 0.1 sa proverljivom paginacijom, sadržajem i fusnotama, ni evidentiranog odobrenja mentora i nastavnika. | PIR direktorijum i [uputstvo](sources/pir-uputstvo-prezentacija-v23-2.pptx) |
+Odluka za naredni rad je da se najpre završi pisani tehnički deo PIR-a: opis
+praktičnog problema i postojećeg toka, projektovano rešenje, arhitektura,
+algoritam, konkretan primer obračuna, metod offline poređenja, stvarni tehnički
+rezultati i njihova ograničenja. Zatim slede dijagrami, uređivanje literature,
+fusnote i Word/PDF prelom. Gotova javna aplikacija pripada završnom master radu;
+PIR mora jasno opisati šta je postojeće, šta je lokalno ispitano i šta se
+predlaže za master rad.
+
+Prikupljanje podataka od test korisnika ostaje otvoreno završno pitanje zbog
+regrutacije i izvodljivosti. Pilot, A/B tok i analiza H2/H3 sada nisu naredni
+radni blok. Pre formalne predaje sa mentorom treba odlučiti da li će PIR imati
+korisničko istraživanje ili će njegove hipoteze i zaključci biti suženi na
+dostupne tehničke nalaze, a korisničko ispitivanje ostati plan master rada.
+Trenutne H1–H3 i ranija fazna tabela ispod opisuju širi predlog, ne potvrđenu
+obavezu da se sve faze sprovedu pre završetka tehničkog rukopisa.
+
+## Evidencija statusa rada
+
+Ova tabela je **jedino mesto za aktuelni status PIR-a**. `Završeno` znači da
+postoji proverljiv artefakt i da je ispunjen uslov iz poslednje kolone; `u toku`
+znači da deo artefakta postoji; `nije započeto` da traženi izlaz još ne postoji;
+`odloženo` da posao nije u sadašnjem prioritetu; `čeka odluku` da naredni korak
+zavisi od mentora ili nastavnika. Oznake ne izražavaju procenat napretka.
+
+| ID | Oblast | Status 23. 10. 2026. | Dokaz sadašnjeg stanja | Uslov za „završeno“ / sledeći korak |
+| --- | --- | --- | --- | --- |
+| T1 | Tehnički offline materijal | **Završeno** | [Dataset, scenariji i manifest](research/README.md), [offline izlaz](research/offline-evaluation-v1.json) i [test baseline](research/technical-baseline-2026-09-23.md): 30 sintetičkih oglasa, S1/S2 sa 16/13 kandidata, tri potpune liste; poslednji zabeleženi ciljani skup 23 testa / 564 asercije. | Završeno za definisani lokalni ogled; ne podrazumeva kvalitet rangiranja, produkcioni API ili trajanje najma. |
+| T2 | Opis rešenja i tehnička analiza u PIR-u | **U toku** | [Poglavlja 3–6 verzije 0.2](pir-verzija-0-2.md) sadrže arhitekturu, metod, primer skora i osnovni presek rank lista. | Razmotriti razlike po oba scenarija, granice baznog proxy-ja i score-only kontrole, ponovljivost i doprinos; uskladiti zaključak, bez tvrdnje o boljoj relevantnosti. |
+| T3 | Dijagrami | **Nije započeto** | U [rukopisu](pir-verzija-0-2.md) nema ugrađenih dijagrama. | Dodati arhitekturu, tok podataka i postupak rangiranja, svaki sa brojem, nazivom, punim izvorom i pozivom iz teksta. |
+| T4 | Literatura i citati | **U toku** | [Rukopis](pir-verzija-0-2.md) koristi 24 izvora i Markdown fusnote; [matrica](research/literature-matrix.md) beleži otvorene bibliografske provere. | Nezavisno proveriti metapodatke i relevantnost svih 24 izvora, pa urediti fusnote po uputstvu. |
+| T5 | Akademska forma i izlazni dokument | **Nije započeto** | Postoji Markdown nacrt; nema finalnog DOCX/PDF PIR-a. | Dodati rezime, ključne reči i sadržaj; ujednačiti tekst; izvesti DOCX/PDF i pregledati fusnote, slike/tabele, paginaciju i obim 20–30 A4 strana. |
+| O1 | Obim hipoteza i predaja | **Čeka odluku** | [Verzija 0.2](pir-verzija-0-2.md) navodi H1–H3 bez empirijskih zaključaka; ime mentora u organizaciji je prazno. | Sa mentorom/nastavnikom potvrditi obim PIR-a, potrebne rezultate i formalne podatke; tek zatim prilagoditi hipoteze i tražiti odobrenje rukopisa. |
+| O2 | Nezavisne ocene i test korisnika | **Odloženo** | [Instrumenti](research/instruments.md) i protokol postoje, ali nema ocena, pilota ni učesničkih rezultata. | Posle tehničkog rukopisa odlučiti sa mentorom šta pripada PIR-u, a šta master radu; pokrenuti merenja samo za odobreni obim. |
+
+**Održavanje statusa:** pri svakoj sadržajnoj promeni ažuriraj datum provere,
+status pogođenog reda, dokaz i preostali uslov u istoj izmeni. Ako se posao
+razdvoji, dodaj red sa novim ID-jem; ne označavaj celinu kao završenu na osnovu
+delimičnog rezultata. Ako je dokaz samo istorijski, navedi datum i ne
+predstavljaj ga kao novo pokrenutu proveru. Stare faze i procene niže služe
+kao kontekst, a ova tabela određuje trenutno stanje i redosled rada.
+
+### Sledeći zadaci za agenta
+
+Nastavi od otvorenih stavki **T2–T5**: prvo dovrši tehničku analizu i
+dijagrame, zatim proveri literaturu i pripremi izlazni dokument. Stavke
+**O1–O2** razmatraju se po završetku tehničkog rukopisa. Ne prelazi na
+regrutaciju ili A/B istraživanje bez nove odluke o obimu.
 
 Ovo je status dokumenata, ne tvrdnja da se van repozitorijuma ništa nije
-desilo. Student je 23. septembra 2026. naveo da plan, obim, mentor u
-organizaciji i protokol za učesnike još nisu spolja potvrđeni, ali to nije
-blokator za nezavisan tehnički rad. Pre formalne predaje prikupiti potvrde.
+desilo. Spoljne potvrde treba evidentirati kada budu dostupne.
 
 ## Obavezni okvir rada
 
@@ -67,7 +105,11 @@ blokator za nezavisan tehnički rad. Pre formalne predaje prikupiti potvrde.
   `planned`, `experimental`, `implemented`, `not run` i `approved`. Ne
   proglašavati H1–H3 potvrđenim pre merenja.
 
-## Plan nastavka i uslovi prelaska
+## Raniji fazni plan i uslovi prelaska
+
+Ovaj fazni raspored dokumentuje širi istraživački predlog. Njegove faze 0.3 i
+0.4 nisu sadašnji redosled rada; važeći status i prioriteti su u evidenciji
+statusa iznad.
 
 | Faza | Posao i artefakt | Uslov za prelazak |
 | --- | --- | --- |
@@ -86,6 +128,9 @@ rezultata.
 
 ### Preostali rad do rukopisa za Word i mentorski pregled
 
+Ovo je ranija procena za širi istraživački plan, zadržana radi konteksta.
+Aktuelni status i redosled određuje evidencija statusa iznad.
+
 Procena je za jednu osobu koja poznaje projekat, uz dostupno PHP okruženje;
 radni dani nisu kalendarski rok. Zavisi od odgovora mentora/nastavnika i
 dostupnosti ocenjivača i učesnika. [OpenSpec tasks](../../../openspec/changes/pir-offline-ranking-evaluation/tasks.md)
@@ -100,14 +145,11 @@ su kontrolna lista za prvi tehnički blok.
 | Glavno istraživanje i analiza | Posle potrebnih odobrenja uključiti 10–20 punoletnih dobrovoljaca, sprovesti uparene zadatke, obraditi agregate i ograničenja | 4–8 dana aktivno, obično 1–3 nedelje kalendarski |
 | Završni rukopis i Word | Rezultati, diskusija, doprinos, zaključak, slike/tabele sa izvorima, sadržaj, fusnote, paginacija i provera 20–30 A4 strana | 3–5 dana |
 
-Preostali procenjeni zbir je **15–28 radnih dana** aktivnog rada, sa preklapanjem pojedinih koraka;
-kalendarski okvir je približno **4–8 nedelja** ako su ljudi i odobrenja brzo
-dostupni. Ovo nije rok predaje. Mentoru se može ranije poslati tehnički
-potkrepljen pre-eksperimentalni nacrt, jasno označen bez H1–H3 rezultata.
-Za verziju spremnu za predaju mentoru po punom okviru treba završiti navedene
-ocene i korisničku evaluaciju, potom usaglasiti administrativne podatke,
-organizaciju, obim, protokol podataka i formu rada. Mentorove korekcije i
-odobrenje nastavnika dolaze nakon tog rukopisa.
+Raniji zbir od **15–28 radnih dana** i kalendarski okvir **4–8 nedelja** bili su
+procena za širi istraživački plan, uključujući učesnike; nisu procena za sadašnji
+tehnički prioritet. Mentoru se može poslati tehnički potkrepljen rukopis, jasno
+označen bez H1–H3 rezultata. Da li je za formalnu predaju potrebna korisnička
+evaluacija ili revizija hipoteza ostaje odluka za usaglašavanje sa mentorom.
 
 ## Handoff novom agentu
 
@@ -121,6 +163,8 @@ odobrenje nastavnika dolaze nakon tog rukopisa.
    izmenjene odluke i tačne komande sa ishodima.
 4. Ne čuvaj sirove odgovore, kontakte, saglasnosti ni snimke u javnom
    repozitorijumu. Dok čekaš spoljnu potvrdu, radi nezavisne zadatke.
+5. Sledi odeljak „Sledeći zadaci za agenta“ iz ovog plana: prvo tehnički
+   rukopis, a odluku o test korisnicima ostavi za završno usaglašavanje.
 
 ## Zaključci iz analize materijala
 

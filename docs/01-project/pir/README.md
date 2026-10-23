@@ -14,8 +14,10 @@ rezultati prikupljeni.
 - [Verzija 0.1](pir-verzija-0-1.md) — aktuelni celoviti pre-eksperimentalni
   istorijski nacrt, sa naknadnom napomenom o offline prototipu.
 - [Nulta verzija](pir-nulta-verzija.md) — raniji nacrt sa mestima za dopunu.
-- [Plan nastavka i metodološke odluke](pir-plan.md) — status, okvir rada,
-  preduslovi za 0.2 i put do predaje. Ovo je početna tačka za novog agenta.
+- [Plan nastavka i metodološke odluke](pir-plan.md) — kanonska evidencija
+  statusa po zadatku, aktuelni prioritet tehničkog rukopisa i uslovi za
+  završetak. Korisničko testiranje je odloženo otvoreno pitanje. Ovo je
+  početna tačka za novog agenta.
 - [Prompt za izradu nulte verzije](pir-ai-prompt.md) — istorijske radne
   instrukcije; ne primenjivati ga na 0.2 bez usklađivanja sa planom.
 - [Sažetak predloga master rada](master-rad-sazetak.md) — polazni akademski
