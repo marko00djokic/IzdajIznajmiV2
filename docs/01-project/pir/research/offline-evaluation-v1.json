@@ -1,0 +1,3897 @@
+{
+    "dataset_version": "v1",
+    "scenario_version": "v1",
+    "model_version": "pir-hybrid-v1",
+    "checksums_sha256": {
+        "dataset-v1.json": "9e3ee95b846c81450a157b8386523f1dd733d0ff497f506a89eca9234c62495a",
+        "scenarios-v1.json": "7e8b5bb57393d12bcb8e99d3ea9681a9feffe8fa1b994c41a68ff7ca62a9fee9"
+    },
+    "commit": "1f39d57315bb674b68d9fab7f07c411f1695a054",
+    "parameters": {
+        "lambda_primary": 0.25,
+        "lambda_sensitivity": [
+            0,
+            0.5
+        ],
+        "scenario_ids": [
+            "S1",
+            "S2"
+        ]
+    },
+    "comparison": {
+        "S1": {
+            "candidate_count": 16,
+            "candidate_codes": [
+                "PIR-001",
+                "PIR-002",
+                "PIR-003",
+                "PIR-004",
+                "PIR-005",
+                "PIR-006",
+                "PIR-007",
+                "PIR-008",
+                "PIR-009",
+                "PIR-010",
+                "PIR-011",
+                "PIR-012",
+                "PIR-013",
+                "PIR-014",
+                "PIR-015",
+                "PIR-016"
+            ],
+            "baseline": {
+                "description": "Offline published_at proxy for search created_at DESC",
+                "ranking": [
+                    {
+                        "rank": 1,
+                        "listing_code": "PIR-001"
+                    },
+                    {
+                        "rank": 2,
+                        "listing_code": "PIR-002"
+                    },
+                    {
+                        "rank": 3,
+                        "listing_code": "PIR-003"
+                    },
+                    {
+                        "rank": 4,
+                        "listing_code": "PIR-004"
+                    },
+                    {
+                        "rank": 5,
+                        "listing_code": "PIR-005"
+                    },
+                    {
+                        "rank": 6,
+                        "listing_code": "PIR-006"
+                    },
+                    {
+                        "rank": 7,
+                        "listing_code": "PIR-007"
+                    },
+                    {
+                        "rank": 8,
+                        "listing_code": "PIR-008"
+                    },
+                    {
+                        "rank": 9,
+                        "listing_code": "PIR-009"
+                    },
+                    {
+                        "rank": 10,
+                        "listing_code": "PIR-010"
+                    },
+                    {
+                        "rank": 11,
+                        "listing_code": "PIR-011"
+                    },
+                    {
+                        "rank": 12,
+                        "listing_code": "PIR-012"
+                    },
+                    {
+                        "rank": 13,
+                        "listing_code": "PIR-013"
+                    },
+                    {
+                        "rank": 14,
+                        "listing_code": "PIR-014"
+                    },
+                    {
+                        "rank": 15,
+                        "listing_code": "PIR-015"
+                    },
+                    {
+                        "rank": 16,
+                        "listing_code": "PIR-016"
+                    }
+                ]
+            },
+            "legacy": {
+                "description": "Score-only fixed heuristic; production candidate generation and source bonuses omitted",
+                "ranking": [
+                    {
+                        "rank": 1,
+                        "listing_code": "PIR-007",
+                        "score": 85
+                    },
+                    {
+                        "rank": 2,
+                        "listing_code": "PIR-010",
+                        "score": 85
+                    },
+                    {
+                        "rank": 3,
+                        "listing_code": "PIR-004",
+                        "score": 80
+                    },
+                    {
+                        "rank": 4,
+                        "listing_code": "PIR-011",
+                        "score": 77.5
+                    },
+                    {
+                        "rank": 5,
+                        "listing_code": "PIR-005",
+                        "score": 75
+                    },
+                    {
+                        "rank": 6,
+                        "listing_code": "PIR-016",
+                        "score": 75
+                    },
+                    {
+                        "rank": 7,
+                        "listing_code": "PIR-003",
+                        "score": 72.5
+                    },
+                    {
+                        "rank": 8,
+                        "listing_code": "PIR-006",
+                        "score": 72.5
+                    },
+                    {
+                        "rank": 9,
+                        "listing_code": "PIR-009",
+                        "score": 70
+                    },
+                    {
+                        "rank": 10,
+                        "listing_code": "PIR-008",
+                        "score": 67.5
+                    },
+                    {
+                        "rank": 11,
+                        "listing_code": "PIR-013",
+                        "score": 67.5
+                    },
+                    {
+                        "rank": 12,
+                        "listing_code": "PIR-014",
+                        "score": 67.5
+                    },
+                    {
+                        "rank": 13,
+                        "listing_code": "PIR-012",
+                        "score": 57.5
+                    },
+                    {
+                        "rank": 14,
+                        "listing_code": "PIR-015",
+                        "score": 57.5
+                    },
+                    {
+                        "rank": 15,
+                        "listing_code": "PIR-001",
+                        "score": 52.5
+                    },
+                    {
+                        "rank": 16,
+                        "listing_code": "PIR-002",
+                        "score": 52.5
+                    }
+                ]
+            },
+            "hybrid": {
+                "lambda": 0.25,
+                "ranking": [
+                    {
+                        "rank": 1,
+                        "listing_code": "PIR-004",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 84.209596,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "utilities": {
+                            "price": 0.677778,
+                            "zone": 1,
+                            "area": 0.672727,
+                            "rooms": 1,
+                            "facilities": 1
+                        },
+                        "contributions": {
+                            "price": 22.027778,
+                            "zone": 28.75,
+                            "area": 10.931818,
+                            "rooms": 10,
+                            "facilities": 12.5
+                        },
+                        "reasons": [
+                            "zone",
+                            "price",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 2,
+                        "listing_code": "PIR-007",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 81.45202,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "utilities": {
+                            "price": 0.511111,
+                            "zone": 1,
+                            "area": 0.836364,
+                            "rooms": 1,
+                            "facilities": 1
+                        },
+                        "contributions": {
+                            "price": 16.611111,
+                            "zone": 28.75,
+                            "area": 13.590909,
+                            "rooms": 10,
+                            "facilities": 12.5
+                        },
+                        "reasons": [
+                            "zone",
+                            "price",
+                            "area"
+                        ]
+                    },
+                    {
+                        "rank": 3,
+                        "listing_code": "PIR-010",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 78.694444,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "utilities": {
+                            "price": 0.344444,
+                            "zone": 1,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 1
+                        },
+                        "contributions": {
+                            "price": 11.194444,
+                            "zone": 28.75,
+                            "area": 16.25,
+                            "rooms": 10,
+                            "facilities": 12.5
+                        },
+                        "reasons": [
+                            "zone",
+                            "area",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 4,
+                        "listing_code": "PIR-001",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 75.717172,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "utilities": {
+                            "price": 0.844444,
+                            "zone": 1,
+                            "area": 0.509091,
+                            "rooms": 0.5,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 27.444444,
+                            "zone": 28.75,
+                            "area": 8.272727,
+                            "rooms": 5,
+                            "facilities": 6.25
+                        },
+                        "reasons": [
+                            "zone",
+                            "price",
+                            "area"
+                        ]
+                    },
+                    {
+                        "rank": 5,
+                        "listing_code": "PIR-002",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 71.17298,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "utilities": {
+                            "price": 0.788889,
+                            "zone": 0.7,
+                            "area": 0.563636,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 25.638889,
+                            "zone": 20.125,
+                            "area": 9.159091,
+                            "rooms": 10,
+                            "facilities": 6.25
+                        },
+                        "reasons": [
+                            "price",
+                            "zone",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 6,
+                        "listing_code": "PIR-016",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 62.542929,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "utilities": {
+                            "price": 0.011111,
+                            "zone": 1,
+                            "area": 0.672727,
+                            "rooms": 1,
+                            "facilities": 1
+                        },
+                        "contributions": {
+                            "price": 0.361111,
+                            "zone": 28.75,
+                            "area": 10.931818,
+                            "rooms": 10,
+                            "facilities": 12.5
+                        },
+                        "reasons": [
+                            "zone",
+                            "facilities",
+                            "area"
+                        ]
+                    },
+                    {
+                        "rank": 7,
+                        "listing_code": "PIR-011",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 62.013889,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "utilities": {
+                            "price": 0.288889,
+                            "zone": 0.7,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 9.388889,
+                            "zone": 20.125,
+                            "area": 16.25,
+                            "rooms": 10,
+                            "facilities": 6.25
+                        },
+                        "reasons": [
+                            "zone",
+                            "area",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 8,
+                        "listing_code": "PIR-008",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 61.842031,
+                        "missing_fields": [
+                            "rooms"
+                        ],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.361111,
+                            "zone": 0.319444,
+                            "area": 0.180556,
+                            "rooms": 0,
+                            "facilities": 0.138889
+                        },
+                        "utilities": {
+                            "price": 0.455556,
+                            "zone": 0.7,
+                            "area": 0.890909,
+                            "rooms": null,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 16.450617,
+                            "zone": 22.361111,
+                            "area": 16.085859,
+                            "rooms": null,
+                            "facilities": 6.944444
+                        },
+                        "reasons": [
+                            "zone",
+                            "price",
+                            "area"
+                        ]
+                    },
+                    {
+                        "rank": 9,
+                        "listing_code": "PIR-003",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 60.191288,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "utilities": {
+                            "price": 0.733333,
+                            "zone": 0.35,
+                            "area": 0.618182,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 23.833333,
+                            "zone": 10.0625,
+                            "area": 10.045455,
+                            "rooms": 10,
+                            "facilities": 6.25
+                        },
+                        "reasons": [
+                            "price",
+                            "zone",
+                            "area"
+                        ]
+                    },
+                    {
+                        "rank": 10,
+                        "listing_code": "PIR-005",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 57.165404,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "utilities": {
+                            "price": 0.622222,
+                            "zone": 0.7,
+                            "area": 0.727273,
+                            "rooms": 0.5,
+                            "facilities": 0
+                        },
+                        "contributions": {
+                            "price": 20.222222,
+                            "zone": 20.125,
+                            "area": 11.818182,
+                            "rooms": 5,
+                            "facilities": 0
+                        },
+                        "reasons": [
+                            "price",
+                            "zone",
+                            "area"
+                        ]
+                    },
+                    {
+                        "rank": 11,
+                        "listing_code": "PIR-013",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 54.050505,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "utilities": {
+                            "price": 0.177778,
+                            "zone": 1,
+                            "area": 0.509091,
+                            "rooms": 0.5,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 5.777778,
+                            "zone": 28.75,
+                            "area": 8.272727,
+                            "rooms": 5,
+                            "facilities": 6.25
+                        },
+                        "reasons": [
+                            "zone",
+                            "area",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 12,
+                        "listing_code": "PIR-006",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 53.40796,
+                        "missing_fields": [
+                            "area"
+                        ],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.38806,
+                            "zone": 0.343284,
+                            "area": 0,
+                            "rooms": 0.119403,
+                            "facilities": 0.149254
+                        },
+                        "utilities": {
+                            "price": 0.566667,
+                            "zone": 0.35,
+                            "area": null,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 21.99005,
+                            "zone": 12.014925,
+                            "area": null,
+                            "rooms": 11.940299,
+                            "facilities": 7.462687
+                        },
+                        "reasons": [
+                            "price",
+                            "zone",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 13,
+                        "listing_code": "PIR-012",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 50.145833,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "utilities": {
+                            "price": 0.233333,
+                            "zone": 0.35,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 7.583333,
+                            "zone": 10.0625,
+                            "area": 16.25,
+                            "rooms": 10,
+                            "facilities": 6.25
+                        },
+                        "reasons": [
+                            "area",
+                            "zone",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 14,
+                        "listing_code": "PIR-014",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 48.175788,
+                        "missing_fields": [
+                            "area"
+                        ],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.38806,
+                            "zone": 0.343284,
+                            "area": 0,
+                            "rooms": 0.119403,
+                            "facilities": 0.149254
+                        },
+                        "utilities": {
+                            "price": 0.122222,
+                            "zone": 0.7,
+                            "area": null,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 4.742952,
+                            "zone": 24.029851,
+                            "area": null,
+                            "rooms": 11.940299,
+                            "facilities": 7.462687
+                        },
+                        "reasons": [
+                            "zone",
+                            "rooms",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 15,
+                        "listing_code": "PIR-009",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 43.426136,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "utilities": {
+                            "price": 0.4,
+                            "zone": 0.35,
+                            "area": 0.945455,
+                            "rooms": 0.5,
+                            "facilities": 0
+                        },
+                        "contributions": {
+                            "price": 13,
+                            "zone": 10.0625,
+                            "area": 15.363636,
+                            "rooms": 5,
+                            "facilities": 0
+                        },
+                        "reasons": [
+                            "area",
+                            "price",
+                            "zone"
+                        ]
+                    },
+                    {
+                        "rank": 16,
+                        "listing_code": "PIR-015",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 31.694024,
+                        "missing_fields": [
+                            "rooms"
+                        ],
+                        "original_weights": {
+                            "price": 0.325,
+                            "zone": 0.2875,
+                            "area": 0.1625,
+                            "rooms": 0.1,
+                            "facilities": 0.125
+                        },
+                        "effective_weights": {
+                            "price": 0.361111,
+                            "zone": 0.319444,
+                            "area": 0.180556,
+                            "rooms": 0,
+                            "facilities": 0.138889
+                        },
+                        "utilities": {
+                            "price": 0.066667,
+                            "zone": 0.35,
+                            "area": 0.618182,
+                            "rooms": null,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 2.407407,
+                            "zone": 11.180556,
+                            "area": 11.161616,
+                            "rooms": null,
+                            "facilities": 6.944444
+                        },
+                        "reasons": [
+                            "zone",
+                            "area",
+                            "facilities"
+                        ]
+                    }
+                ]
+            },
+            "sensitivity": {
+                "0": [
+                    {
+                        "rank": 1,
+                        "listing_code": "PIR-004",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 83.813131,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "utilities": {
+                            "price": 0.677778,
+                            "zone": 1,
+                            "area": 0.672727,
+                            "rooms": 1,
+                            "facilities": 1
+                        },
+                        "contributions": {
+                            "price": 23.722222,
+                            "zone": 30,
+                            "area": 10.090909,
+                            "rooms": 10,
+                            "facilities": 10
+                        },
+                        "reasons": [
+                            "zone",
+                            "price",
+                            "area"
+                        ]
+                    },
+                    {
+                        "rank": 2,
+                        "listing_code": "PIR-007",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 80.434343,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "utilities": {
+                            "price": 0.511111,
+                            "zone": 1,
+                            "area": 0.836364,
+                            "rooms": 1,
+                            "facilities": 1
+                        },
+                        "contributions": {
+                            "price": 17.888889,
+                            "zone": 30,
+                            "area": 12.545455,
+                            "rooms": 10,
+                            "facilities": 10
+                        },
+                        "reasons": [
+                            "zone",
+                            "price",
+                            "area"
+                        ]
+                    },
+                    {
+                        "rank": 3,
+                        "listing_code": "PIR-001",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 77.191919,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "utilities": {
+                            "price": 0.844444,
+                            "zone": 1,
+                            "area": 0.509091,
+                            "rooms": 0.5,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 29.555556,
+                            "zone": 30,
+                            "area": 7.636364,
+                            "rooms": 5,
+                            "facilities": 5
+                        },
+                        "reasons": [
+                            "zone",
+                            "price",
+                            "area"
+                        ]
+                    },
+                    {
+                        "rank": 4,
+                        "listing_code": "PIR-010",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 77.055556,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "utilities": {
+                            "price": 0.344444,
+                            "zone": 1,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 1
+                        },
+                        "contributions": {
+                            "price": 12.055556,
+                            "zone": 30,
+                            "area": 15,
+                            "rooms": 10,
+                            "facilities": 10
+                        },
+                        "reasons": [
+                            "zone",
+                            "area",
+                            "price"
+                        ]
+                    },
+                    {
+                        "rank": 5,
+                        "listing_code": "PIR-002",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 72.065657,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "utilities": {
+                            "price": 0.788889,
+                            "zone": 0.7,
+                            "area": 0.563636,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 27.611111,
+                            "zone": 21,
+                            "area": 8.454545,
+                            "rooms": 10,
+                            "facilities": 5
+                        },
+                        "reasons": [
+                            "price",
+                            "zone",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 6,
+                        "listing_code": "PIR-008",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 61.453423,
+                        "missing_fields": [
+                            "rooms"
+                        ],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.388889,
+                            "zone": 0.333333,
+                            "area": 0.166667,
+                            "rooms": 0,
+                            "facilities": 0.111111
+                        },
+                        "utilities": {
+                            "price": 0.455556,
+                            "zone": 0.7,
+                            "area": 0.890909,
+                            "rooms": null,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 17.716049,
+                            "zone": 23.333333,
+                            "area": 14.848485,
+                            "rooms": null,
+                            "facilities": 5.555556
+                        },
+                        "reasons": [
+                            "zone",
+                            "price",
+                            "area"
+                        ]
+                    },
+                    {
+                        "rank": 7,
+                        "listing_code": "PIR-011",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 61.111111,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "utilities": {
+                            "price": 0.288889,
+                            "zone": 0.7,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 10.111111,
+                            "zone": 21,
+                            "area": 15,
+                            "rooms": 10,
+                            "facilities": 5
+                        },
+                        "reasons": [
+                            "zone",
+                            "area",
+                            "price"
+                        ]
+                    },
+                    {
+                        "rank": 8,
+                        "listing_code": "PIR-016",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 60.479798,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "utilities": {
+                            "price": 0.011111,
+                            "zone": 1,
+                            "area": 0.672727,
+                            "rooms": 1,
+                            "facilities": 1
+                        },
+                        "contributions": {
+                            "price": 0.388889,
+                            "zone": 30,
+                            "area": 10.090909,
+                            "rooms": 10,
+                            "facilities": 10
+                        },
+                        "reasons": [
+                            "zone",
+                            "area",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 9,
+                        "listing_code": "PIR-003",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 60.439394,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "utilities": {
+                            "price": 0.733333,
+                            "zone": 0.35,
+                            "area": 0.618182,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 25.666667,
+                            "zone": 10.5,
+                            "area": 9.272727,
+                            "rooms": 10,
+                            "facilities": 5
+                        },
+                        "reasons": [
+                            "price",
+                            "zone",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 10,
+                        "listing_code": "PIR-005",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 58.686869,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "utilities": {
+                            "price": 0.622222,
+                            "zone": 0.7,
+                            "area": 0.727273,
+                            "rooms": 0.5,
+                            "facilities": 0
+                        },
+                        "contributions": {
+                            "price": 21.777778,
+                            "zone": 21,
+                            "area": 10.909091,
+                            "rooms": 5,
+                            "facilities": 0
+                        },
+                        "reasons": [
+                            "price",
+                            "zone",
+                            "area"
+                        ]
+                    },
+                    {
+                        "rank": 11,
+                        "listing_code": "PIR-013",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 53.858586,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "utilities": {
+                            "price": 0.177778,
+                            "zone": 1,
+                            "area": 0.509091,
+                            "rooms": 0.5,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 6.222222,
+                            "zone": 30,
+                            "area": 7.636364,
+                            "rooms": 5,
+                            "facilities": 5
+                        },
+                        "reasons": [
+                            "zone",
+                            "area",
+                            "price"
+                        ]
+                    },
+                    {
+                        "rank": 12,
+                        "listing_code": "PIR-006",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 53.333333,
+                        "missing_fields": [
+                            "area"
+                        ],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.411765,
+                            "zone": 0.352941,
+                            "area": 0,
+                            "rooms": 0.117647,
+                            "facilities": 0.117647
+                        },
+                        "utilities": {
+                            "price": 0.566667,
+                            "zone": 0.35,
+                            "area": null,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 23.333333,
+                            "zone": 12.352941,
+                            "area": null,
+                            "rooms": 11.764706,
+                            "facilities": 5.882353
+                        },
+                        "reasons": [
+                            "price",
+                            "zone",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 13,
+                        "listing_code": "PIR-012",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 48.666667,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "utilities": {
+                            "price": 0.233333,
+                            "zone": 0.35,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 8.166667,
+                            "zone": 10.5,
+                            "area": 15,
+                            "rooms": 10,
+                            "facilities": 5
+                        },
+                        "reasons": [
+                            "area",
+                            "zone",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 14,
+                        "listing_code": "PIR-014",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 47.385621,
+                        "missing_fields": [
+                            "area"
+                        ],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.411765,
+                            "zone": 0.352941,
+                            "area": 0,
+                            "rooms": 0.117647,
+                            "facilities": 0.117647
+                        },
+                        "utilities": {
+                            "price": 0.122222,
+                            "zone": 0.7,
+                            "area": null,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 5.03268,
+                            "zone": 24.705882,
+                            "area": null,
+                            "rooms": 11.764706,
+                            "facilities": 5.882353
+                        },
+                        "reasons": [
+                            "zone",
+                            "rooms",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 15,
+                        "listing_code": "PIR-009",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 43.681818,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "utilities": {
+                            "price": 0.4,
+                            "zone": 0.35,
+                            "area": 0.945455,
+                            "rooms": 0.5,
+                            "facilities": 0
+                        },
+                        "contributions": {
+                            "price": 14,
+                            "zone": 10.5,
+                            "area": 14.181818,
+                            "rooms": 5,
+                            "facilities": 0
+                        },
+                        "reasons": [
+                            "area",
+                            "price",
+                            "zone"
+                        ]
+                    },
+                    {
+                        "rank": 16,
+                        "listing_code": "PIR-015",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 30.117845,
+                        "missing_fields": [
+                            "rooms"
+                        ],
+                        "original_weights": {
+                            "price": 0.35,
+                            "zone": 0.3,
+                            "area": 0.15,
+                            "rooms": 0.1,
+                            "facilities": 0.1
+                        },
+                        "effective_weights": {
+                            "price": 0.388889,
+                            "zone": 0.333333,
+                            "area": 0.166667,
+                            "rooms": 0,
+                            "facilities": 0.111111
+                        },
+                        "utilities": {
+                            "price": 0.066667,
+                            "zone": 0.35,
+                            "area": 0.618182,
+                            "rooms": null,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 2.592593,
+                            "zone": 11.666667,
+                            "area": 10.30303,
+                            "rooms": null,
+                            "facilities": 5.555556
+                        },
+                        "reasons": [
+                            "zone",
+                            "area",
+                            "facilities"
+                        ]
+                    }
+                ],
+                "0.5": [
+                    {
+                        "rank": 1,
+                        "listing_code": "PIR-004",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 84.606061,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "utilities": {
+                            "price": 0.677778,
+                            "zone": 1,
+                            "area": 0.672727,
+                            "rooms": 1,
+                            "facilities": 1
+                        },
+                        "contributions": {
+                            "price": 20.333333,
+                            "zone": 27.5,
+                            "area": 11.772727,
+                            "rooms": 10,
+                            "facilities": 15
+                        },
+                        "reasons": [
+                            "zone",
+                            "price",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 2,
+                        "listing_code": "PIR-007",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 82.469697,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "utilities": {
+                            "price": 0.511111,
+                            "zone": 1,
+                            "area": 0.836364,
+                            "rooms": 1,
+                            "facilities": 1
+                        },
+                        "contributions": {
+                            "price": 15.333333,
+                            "zone": 27.5,
+                            "area": 14.636364,
+                            "rooms": 10,
+                            "facilities": 15
+                        },
+                        "reasons": [
+                            "zone",
+                            "price",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 3,
+                        "listing_code": "PIR-010",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 80.333333,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "utilities": {
+                            "price": 0.344444,
+                            "zone": 1,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 1
+                        },
+                        "contributions": {
+                            "price": 10.333333,
+                            "zone": 27.5,
+                            "area": 17.5,
+                            "rooms": 10,
+                            "facilities": 15
+                        },
+                        "reasons": [
+                            "zone",
+                            "area",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 4,
+                        "listing_code": "PIR-001",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 74.242424,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "utilities": {
+                            "price": 0.844444,
+                            "zone": 1,
+                            "area": 0.509091,
+                            "rooms": 0.5,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 25.333333,
+                            "zone": 27.5,
+                            "area": 8.909091,
+                            "rooms": 5,
+                            "facilities": 7.5
+                        },
+                        "reasons": [
+                            "zone",
+                            "price",
+                            "area"
+                        ]
+                    },
+                    {
+                        "rank": 5,
+                        "listing_code": "PIR-002",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 70.280303,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "utilities": {
+                            "price": 0.788889,
+                            "zone": 0.7,
+                            "area": 0.563636,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 23.666667,
+                            "zone": 19.25,
+                            "area": 9.863636,
+                            "rooms": 10,
+                            "facilities": 7.5
+                        },
+                        "reasons": [
+                            "price",
+                            "zone",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 6,
+                        "listing_code": "PIR-016",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 64.606061,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "utilities": {
+                            "price": 0.011111,
+                            "zone": 1,
+                            "area": 0.672727,
+                            "rooms": 1,
+                            "facilities": 1
+                        },
+                        "contributions": {
+                            "price": 0.333333,
+                            "zone": 27.5,
+                            "area": 11.772727,
+                            "rooms": 10,
+                            "facilities": 15
+                        },
+                        "reasons": [
+                            "zone",
+                            "facilities",
+                            "area"
+                        ]
+                    },
+                    {
+                        "rank": 7,
+                        "listing_code": "PIR-011",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 62.916667,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "utilities": {
+                            "price": 0.288889,
+                            "zone": 0.7,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 8.666667,
+                            "zone": 19.25,
+                            "area": 17.5,
+                            "rooms": 10,
+                            "facilities": 7.5
+                        },
+                        "reasons": [
+                            "zone",
+                            "area",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 8,
+                        "listing_code": "PIR-008",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 62.23064,
+                        "missing_fields": [
+                            "rooms"
+                        ],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.333333,
+                            "zone": 0.305556,
+                            "area": 0.194444,
+                            "rooms": 0,
+                            "facilities": 0.166667
+                        },
+                        "utilities": {
+                            "price": 0.455556,
+                            "zone": 0.7,
+                            "area": 0.890909,
+                            "rooms": null,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 15.185185,
+                            "zone": 21.388889,
+                            "area": 17.323232,
+                            "rooms": null,
+                            "facilities": 8.333333
+                        },
+                        "reasons": [
+                            "zone",
+                            "area",
+                            "price"
+                        ]
+                    },
+                    {
+                        "rank": 9,
+                        "listing_code": "PIR-003",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 59.943182,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "utilities": {
+                            "price": 0.733333,
+                            "zone": 0.35,
+                            "area": 0.618182,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 22,
+                            "zone": 9.625,
+                            "area": 10.818182,
+                            "rooms": 10,
+                            "facilities": 7.5
+                        },
+                        "reasons": [
+                            "price",
+                            "area",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 10,
+                        "listing_code": "PIR-005",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 55.643939,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "utilities": {
+                            "price": 0.622222,
+                            "zone": 0.7,
+                            "area": 0.727273,
+                            "rooms": 0.5,
+                            "facilities": 0
+                        },
+                        "contributions": {
+                            "price": 18.666667,
+                            "zone": 19.25,
+                            "area": 12.727273,
+                            "rooms": 5,
+                            "facilities": 0
+                        },
+                        "reasons": [
+                            "zone",
+                            "price",
+                            "area"
+                        ]
+                    },
+                    {
+                        "rank": 11,
+                        "listing_code": "PIR-013",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 54.242424,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "utilities": {
+                            "price": 0.177778,
+                            "zone": 1,
+                            "area": 0.509091,
+                            "rooms": 0.5,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 5.333333,
+                            "zone": 27.5,
+                            "area": 8.909091,
+                            "rooms": 5,
+                            "facilities": 7.5
+                        },
+                        "reasons": [
+                            "zone",
+                            "area",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 12,
+                        "listing_code": "PIR-006",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 53.484848,
+                        "missing_fields": [
+                            "area"
+                        ],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.363636,
+                            "zone": 0.333333,
+                            "area": 0,
+                            "rooms": 0.121212,
+                            "facilities": 0.181818
+                        },
+                        "utilities": {
+                            "price": 0.566667,
+                            "zone": 0.35,
+                            "area": null,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 20.606061,
+                            "zone": 11.666667,
+                            "area": null,
+                            "rooms": 12.121212,
+                            "facilities": 9.090909
+                        },
+                        "reasons": [
+                            "price",
+                            "rooms",
+                            "zone"
+                        ]
+                    },
+                    {
+                        "rank": 13,
+                        "listing_code": "PIR-012",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 51.625,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "utilities": {
+                            "price": 0.233333,
+                            "zone": 0.35,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 7,
+                            "zone": 9.625,
+                            "area": 17.5,
+                            "rooms": 10,
+                            "facilities": 7.5
+                        },
+                        "reasons": [
+                            "area",
+                            "rooms",
+                            "zone"
+                        ]
+                    },
+                    {
+                        "rank": 14,
+                        "listing_code": "PIR-014",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 48.989899,
+                        "missing_fields": [
+                            "area"
+                        ],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.363636,
+                            "zone": 0.333333,
+                            "area": 0,
+                            "rooms": 0.121212,
+                            "facilities": 0.181818
+                        },
+                        "utilities": {
+                            "price": 0.122222,
+                            "zone": 0.7,
+                            "area": null,
+                            "rooms": 1,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 4.444444,
+                            "zone": 23.333333,
+                            "area": null,
+                            "rooms": 12.121212,
+                            "facilities": 9.090909
+                        },
+                        "reasons": [
+                            "zone",
+                            "rooms",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 15,
+                        "listing_code": "PIR-009",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 43.170455,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "utilities": {
+                            "price": 0.4,
+                            "zone": 0.35,
+                            "area": 0.945455,
+                            "rooms": 0.5,
+                            "facilities": 0
+                        },
+                        "contributions": {
+                            "price": 12,
+                            "zone": 9.625,
+                            "area": 16.545455,
+                            "rooms": 5,
+                            "facilities": 0
+                        },
+                        "reasons": [
+                            "area",
+                            "price",
+                            "zone"
+                        ]
+                    },
+                    {
+                        "rank": 16,
+                        "listing_code": "PIR-015",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 33.270202,
+                        "missing_fields": [
+                            "rooms"
+                        ],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.275,
+                            "area": 0.175,
+                            "rooms": 0.1,
+                            "facilities": 0.15
+                        },
+                        "effective_weights": {
+                            "price": 0.333333,
+                            "zone": 0.305556,
+                            "area": 0.194444,
+                            "rooms": 0,
+                            "facilities": 0.166667
+                        },
+                        "utilities": {
+                            "price": 0.066667,
+                            "zone": 0.35,
+                            "area": 0.618182,
+                            "rooms": null,
+                            "facilities": 0.5
+                        },
+                        "contributions": {
+                            "price": 2.222222,
+                            "zone": 10.694444,
+                            "area": 12.020202,
+                            "rooms": null,
+                            "facilities": 8.333333
+                        },
+                        "reasons": [
+                            "area",
+                            "zone",
+                            "facilities"
+                        ]
+                    }
+                ]
+            }
+        },
+        "S2": {
+            "candidate_count": 13,
+            "candidate_codes": [
+                "PIR-002",
+                "PIR-003",
+                "PIR-004",
+                "PIR-006",
+                "PIR-007",
+                "PIR-008",
+                "PIR-010",
+                "PIR-011",
+                "PIR-012",
+                "PIR-014",
+                "PIR-015",
+                "PIR-016",
+                "PIR-018"
+            ],
+            "baseline": {
+                "description": "Offline published_at proxy for search created_at DESC",
+                "ranking": [
+                    {
+                        "rank": 1,
+                        "listing_code": "PIR-002"
+                    },
+                    {
+                        "rank": 2,
+                        "listing_code": "PIR-003"
+                    },
+                    {
+                        "rank": 3,
+                        "listing_code": "PIR-004"
+                    },
+                    {
+                        "rank": 4,
+                        "listing_code": "PIR-006"
+                    },
+                    {
+                        "rank": 5,
+                        "listing_code": "PIR-007"
+                    },
+                    {
+                        "rank": 6,
+                        "listing_code": "PIR-008"
+                    },
+                    {
+                        "rank": 7,
+                        "listing_code": "PIR-010"
+                    },
+                    {
+                        "rank": 8,
+                        "listing_code": "PIR-011"
+                    },
+                    {
+                        "rank": 9,
+                        "listing_code": "PIR-012"
+                    },
+                    {
+                        "rank": 10,
+                        "listing_code": "PIR-014"
+                    },
+                    {
+                        "rank": 11,
+                        "listing_code": "PIR-015"
+                    },
+                    {
+                        "rank": 12,
+                        "listing_code": "PIR-016"
+                    },
+                    {
+                        "rank": 13,
+                        "listing_code": "PIR-018"
+                    }
+                ]
+            },
+            "legacy": {
+                "description": "Score-only fixed heuristic; production candidate generation and source bonuses omitted",
+                "ranking": [
+                    {
+                        "rank": 1,
+                        "listing_code": "PIR-007",
+                        "score": 80
+                    },
+                    {
+                        "rank": 2,
+                        "listing_code": "PIR-010",
+                        "score": 80
+                    },
+                    {
+                        "rank": 3,
+                        "listing_code": "PIR-011",
+                        "score": 80
+                    },
+                    {
+                        "rank": 4,
+                        "listing_code": "PIR-004",
+                        "score": 75
+                    },
+                    {
+                        "rank": 5,
+                        "listing_code": "PIR-006",
+                        "score": 75
+                    },
+                    {
+                        "rank": 6,
+                        "listing_code": "PIR-016",
+                        "score": 75
+                    },
+                    {
+                        "rank": 7,
+                        "listing_code": "PIR-018",
+                        "score": 75
+                    },
+                    {
+                        "rank": 8,
+                        "listing_code": "PIR-003",
+                        "score": 70
+                    },
+                    {
+                        "rank": 9,
+                        "listing_code": "PIR-008",
+                        "score": 65
+                    },
+                    {
+                        "rank": 10,
+                        "listing_code": "PIR-014",
+                        "score": 65
+                    },
+                    {
+                        "rank": 11,
+                        "listing_code": "PIR-012",
+                        "score": 55
+                    },
+                    {
+                        "rank": 12,
+                        "listing_code": "PIR-015",
+                        "score": 55
+                    },
+                    {
+                        "rank": 13,
+                        "listing_code": "PIR-002",
+                        "score": 50
+                    }
+                ]
+            },
+            "hybrid": {
+                "lambda": 0.25,
+                "ranking": [
+                    {
+                        "rank": 1,
+                        "listing_code": "PIR-004",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 81.163889,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "effective_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "utilities": {
+                            "price": 0.71,
+                            "zone": 1,
+                            "area": 0.822222,
+                            "rooms": 1,
+                            "facilities": 0.666667
+                        },
+                        "contributions": {
+                            "price": 19.525,
+                            "zone": 15,
+                            "area": 17.472222,
+                            "rooms": 15,
+                            "facilities": 14.166667
+                        },
+                        "reasons": [
+                            "price",
+                            "area",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 2,
+                        "listing_code": "PIR-007",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 80.816667,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "effective_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "utilities": {
+                            "price": 0.56,
+                            "zone": 1,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 0.666667
+                        },
+                        "contributions": {
+                            "price": 15.4,
+                            "zone": 15,
+                            "area": 21.25,
+                            "rooms": 15,
+                            "facilities": 14.166667
+                        },
+                        "reasons": [
+                            "area",
+                            "price",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 3,
+                        "listing_code": "PIR-016",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 71.747222,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "effective_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "utilities": {
+                            "price": 0.11,
+                            "zone": 1,
+                            "area": 0.822222,
+                            "rooms": 1,
+                            "facilities": 1
+                        },
+                        "contributions": {
+                            "price": 3.025,
+                            "zone": 15,
+                            "area": 17.472222,
+                            "rooms": 15,
+                            "facilities": 21.25
+                        },
+                        "reasons": [
+                            "facilities",
+                            "area",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 4,
+                        "listing_code": "PIR-010",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 71.691667,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "effective_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "utilities": {
+                            "price": 0.41,
+                            "zone": 1,
+                            "area": 1,
+                            "rooms": 0.666667,
+                            "facilities": 0.666667
+                        },
+                        "contributions": {
+                            "price": 11.275,
+                            "zone": 15,
+                            "area": 21.25,
+                            "rooms": 10,
+                            "facilities": 14.166667
+                        },
+                        "reasons": [
+                            "area",
+                            "zone",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 5,
+                        "listing_code": "PIR-011",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 70.816667,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "effective_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "utilities": {
+                            "price": 0.36,
+                            "zone": 0.7,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 0.666667
+                        },
+                        "contributions": {
+                            "price": 9.9,
+                            "zone": 10.5,
+                            "area": 21.25,
+                            "rooms": 15,
+                            "facilities": 14.166667
+                        },
+                        "reasons": [
+                            "area",
+                            "rooms",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 6,
+                        "listing_code": "PIR-002",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 64.497222,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "effective_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "utilities": {
+                            "price": 0.81,
+                            "zone": 0.7,
+                            "area": 0.688889,
+                            "rooms": 0.666667,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 22.275,
+                            "zone": 10.5,
+                            "area": 14.638889,
+                            "rooms": 10,
+                            "facilities": 7.083333
+                        },
+                        "reasons": [
+                            "price",
+                            "area",
+                            "zone"
+                        ]
+                    },
+                    {
+                        "rank": 7,
+                        "listing_code": "PIR-003",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 64.288889,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "effective_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "utilities": {
+                            "price": 0.76,
+                            "zone": 0.35,
+                            "area": 0.755556,
+                            "rooms": 1,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 20.9,
+                            "zone": 5.25,
+                            "area": 16.055556,
+                            "rooms": 15,
+                            "facilities": 7.083333
+                        },
+                        "reasons": [
+                            "price",
+                            "area",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 8,
+                        "listing_code": "PIR-008",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 62.186275,
+                        "missing_fields": [
+                            "rooms"
+                        ],
+                        "original_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "effective_weights": {
+                            "price": 0.323529,
+                            "zone": 0.176471,
+                            "area": 0.25,
+                            "rooms": 0,
+                            "facilities": 0.25
+                        },
+                        "utilities": {
+                            "price": 0.51,
+                            "zone": 0.7,
+                            "area": 1,
+                            "rooms": null,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 16.5,
+                            "zone": 12.352941,
+                            "area": 25,
+                            "rooms": null,
+                            "facilities": 8.333333
+                        },
+                        "reasons": [
+                            "area",
+                            "price",
+                            "zone"
+                        ]
+                    },
+                    {
+                        "rank": 9,
+                        "listing_code": "PIR-006",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 58.656085,
+                        "missing_fields": [
+                            "area"
+                        ],
+                        "original_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "effective_weights": {
+                            "price": 0.349206,
+                            "zone": 0.190476,
+                            "area": 0,
+                            "rooms": 0.190476,
+                            "facilities": 0.269841
+                        },
+                        "utilities": {
+                            "price": 0.61,
+                            "zone": 0.35,
+                            "area": null,
+                            "rooms": 0.666667,
+                            "facilities": 0.666667
+                        },
+                        "contributions": {
+                            "price": 21.301587,
+                            "zone": 6.666667,
+                            "area": null,
+                            "rooms": 12.698413,
+                            "facilities": 17.989418
+                        },
+                        "reasons": [
+                            "price",
+                            "facilities",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 10,
+                        "listing_code": "PIR-012",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 57.108333,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "effective_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "utilities": {
+                            "price": 0.31,
+                            "zone": 0.35,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 8.525,
+                            "zone": 5.25,
+                            "area": 21.25,
+                            "rooms": 15,
+                            "facilities": 7.083333
+                        },
+                        "reasons": [
+                            "area",
+                            "rooms",
+                            "price"
+                        ]
+                    },
+                    {
+                        "rank": 11,
+                        "listing_code": "PIR-018",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 42.913889,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "effective_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "utilities": {
+                            "price": 0.01,
+                            "zone": 0.35,
+                            "area": 0.955556,
+                            "rooms": 0.666667,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 0.275,
+                            "zone": 5.25,
+                            "area": 20.305556,
+                            "rooms": 10,
+                            "facilities": 7.083333
+                        },
+                        "reasons": [
+                            "area",
+                            "rooms",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 12,
+                        "listing_code": "PIR-014",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 42.359788,
+                        "missing_fields": [
+                            "area"
+                        ],
+                        "original_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "effective_weights": {
+                            "price": 0.349206,
+                            "zone": 0.190476,
+                            "area": 0,
+                            "rooms": 0.190476,
+                            "facilities": 0.269841
+                        },
+                        "utilities": {
+                            "price": 0.21,
+                            "zone": 0.7,
+                            "area": null,
+                            "rooms": 0.666667,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 7.333333,
+                            "zone": 13.333333,
+                            "area": null,
+                            "rooms": 12.698413,
+                            "facilities": 8.994709
+                        },
+                        "reasons": [
+                            "zone",
+                            "rooms",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 13,
+                        "listing_code": "PIR-015",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 38.575163,
+                        "missing_fields": [
+                            "rooms"
+                        ],
+                        "original_weights": {
+                            "price": 0.275,
+                            "zone": 0.15,
+                            "area": 0.2125,
+                            "rooms": 0.15,
+                            "facilities": 0.2125
+                        },
+                        "effective_weights": {
+                            "price": 0.323529,
+                            "zone": 0.176471,
+                            "area": 0.25,
+                            "rooms": 0,
+                            "facilities": 0.25
+                        },
+                        "utilities": {
+                            "price": 0.16,
+                            "zone": 0.35,
+                            "area": 0.755556,
+                            "rooms": null,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 5.176471,
+                            "zone": 6.176471,
+                            "area": 18.888889,
+                            "rooms": null,
+                            "facilities": 8.333333
+                        },
+                        "reasons": [
+                            "area",
+                            "facilities",
+                            "zone"
+                        ]
+                    }
+                ]
+            },
+            "sensitivity": {
+                "0": [
+                    {
+                        "rank": 1,
+                        "listing_code": "PIR-004",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 81.077778,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "utilities": {
+                            "price": 0.71,
+                            "zone": 1,
+                            "area": 0.822222,
+                            "rooms": 1,
+                            "facilities": 0.666667
+                        },
+                        "contributions": {
+                            "price": 21.3,
+                            "zone": 15,
+                            "area": 16.444444,
+                            "rooms": 15,
+                            "facilities": 13.333333
+                        },
+                        "reasons": [
+                            "price",
+                            "area",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 2,
+                        "listing_code": "PIR-007",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 80.133333,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "utilities": {
+                            "price": 0.56,
+                            "zone": 1,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 0.666667
+                        },
+                        "contributions": {
+                            "price": 16.8,
+                            "zone": 15,
+                            "area": 20,
+                            "rooms": 15,
+                            "facilities": 13.333333
+                        },
+                        "reasons": [
+                            "area",
+                            "price",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 3,
+                        "listing_code": "PIR-010",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 70.633333,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "utilities": {
+                            "price": 0.41,
+                            "zone": 1,
+                            "area": 1,
+                            "rooms": 0.666667,
+                            "facilities": 0.666667
+                        },
+                        "contributions": {
+                            "price": 12.3,
+                            "zone": 15,
+                            "area": 20,
+                            "rooms": 10,
+                            "facilities": 13.333333
+                        },
+                        "reasons": [
+                            "area",
+                            "zone",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 4,
+                        "listing_code": "PIR-016",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 69.744444,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "utilities": {
+                            "price": 0.11,
+                            "zone": 1,
+                            "area": 0.822222,
+                            "rooms": 1,
+                            "facilities": 1
+                        },
+                        "contributions": {
+                            "price": 3.3,
+                            "zone": 15,
+                            "area": 16.444444,
+                            "rooms": 15,
+                            "facilities": 20
+                        },
+                        "reasons": [
+                            "facilities",
+                            "area",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 5,
+                        "listing_code": "PIR-011",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 69.633333,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "utilities": {
+                            "price": 0.36,
+                            "zone": 0.7,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 0.666667
+                        },
+                        "contributions": {
+                            "price": 10.8,
+                            "zone": 10.5,
+                            "area": 20,
+                            "rooms": 15,
+                            "facilities": 13.333333
+                        },
+                        "reasons": [
+                            "area",
+                            "rooms",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 6,
+                        "listing_code": "PIR-002",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 65.244444,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "utilities": {
+                            "price": 0.81,
+                            "zone": 0.7,
+                            "area": 0.688889,
+                            "rooms": 0.666667,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 24.3,
+                            "zone": 10.5,
+                            "area": 13.777778,
+                            "rooms": 10,
+                            "facilities": 6.666667
+                        },
+                        "reasons": [
+                            "price",
+                            "area",
+                            "zone"
+                        ]
+                    },
+                    {
+                        "rank": 7,
+                        "listing_code": "PIR-003",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 64.827778,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "utilities": {
+                            "price": 0.76,
+                            "zone": 0.35,
+                            "area": 0.755556,
+                            "rooms": 1,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 22.8,
+                            "zone": 5.25,
+                            "area": 15.111111,
+                            "rooms": 15,
+                            "facilities": 6.666667
+                        },
+                        "reasons": [
+                            "price",
+                            "area",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 8,
+                        "listing_code": "PIR-008",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 61.72549,
+                        "missing_fields": [
+                            "rooms"
+                        ],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "effective_weights": {
+                            "price": 0.352941,
+                            "zone": 0.176471,
+                            "area": 0.235294,
+                            "rooms": 0,
+                            "facilities": 0.235294
+                        },
+                        "utilities": {
+                            "price": 0.51,
+                            "zone": 0.7,
+                            "area": 1,
+                            "rooms": null,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 18,
+                            "zone": 12.352941,
+                            "area": 23.529412,
+                            "rooms": null,
+                            "facilities": 7.843137
+                        },
+                        "reasons": [
+                            "area",
+                            "price",
+                            "zone"
+                        ]
+                    },
+                    {
+                        "rank": 9,
+                        "listing_code": "PIR-006",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 58.604167,
+                        "missing_fields": [
+                            "area"
+                        ],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "effective_weights": {
+                            "price": 0.375,
+                            "zone": 0.1875,
+                            "area": 0,
+                            "rooms": 0.1875,
+                            "facilities": 0.25
+                        },
+                        "utilities": {
+                            "price": 0.61,
+                            "zone": 0.35,
+                            "area": null,
+                            "rooms": 0.666667,
+                            "facilities": 0.666667
+                        },
+                        "contributions": {
+                            "price": 22.875,
+                            "zone": 6.5625,
+                            "area": null,
+                            "rooms": 12.5,
+                            "facilities": 16.666667
+                        },
+                        "reasons": [
+                            "price",
+                            "facilities",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 10,
+                        "listing_code": "PIR-012",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 56.216667,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "utilities": {
+                            "price": 0.31,
+                            "zone": 0.35,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 9.3,
+                            "zone": 5.25,
+                            "area": 20,
+                            "rooms": 15,
+                            "facilities": 6.666667
+                        },
+                        "reasons": [
+                            "area",
+                            "rooms",
+                            "price"
+                        ]
+                    },
+                    {
+                        "rank": 11,
+                        "listing_code": "PIR-014",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 41.833333,
+                        "missing_fields": [
+                            "area"
+                        ],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "effective_weights": {
+                            "price": 0.375,
+                            "zone": 0.1875,
+                            "area": 0,
+                            "rooms": 0.1875,
+                            "facilities": 0.25
+                        },
+                        "utilities": {
+                            "price": 0.21,
+                            "zone": 0.7,
+                            "area": null,
+                            "rooms": 0.666667,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 7.875,
+                            "zone": 13.125,
+                            "area": null,
+                            "rooms": 12.5,
+                            "facilities": 8.333333
+                        },
+                        "reasons": [
+                            "zone",
+                            "rooms",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 12,
+                        "listing_code": "PIR-018",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 41.327778,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "effective_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "utilities": {
+                            "price": 0.01,
+                            "zone": 0.35,
+                            "area": 0.955556,
+                            "rooms": 0.666667,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 0.3,
+                            "zone": 5.25,
+                            "area": 19.111111,
+                            "rooms": 10,
+                            "facilities": 6.666667
+                        },
+                        "reasons": [
+                            "area",
+                            "rooms",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 13,
+                        "listing_code": "PIR-015",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 37.444444,
+                        "missing_fields": [
+                            "rooms"
+                        ],
+                        "original_weights": {
+                            "price": 0.3,
+                            "zone": 0.15,
+                            "area": 0.2,
+                            "rooms": 0.15,
+                            "facilities": 0.2
+                        },
+                        "effective_weights": {
+                            "price": 0.352941,
+                            "zone": 0.176471,
+                            "area": 0.235294,
+                            "rooms": 0,
+                            "facilities": 0.235294
+                        },
+                        "utilities": {
+                            "price": 0.16,
+                            "zone": 0.35,
+                            "area": 0.755556,
+                            "rooms": null,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 5.647059,
+                            "zone": 6.176471,
+                            "area": 17.777778,
+                            "rooms": null,
+                            "facilities": 7.843137
+                        },
+                        "reasons": [
+                            "area",
+                            "facilities",
+                            "zone"
+                        ]
+                    }
+                ],
+                "0.5": [
+                    {
+                        "rank": 1,
+                        "listing_code": "PIR-007",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 81.5,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "effective_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "utilities": {
+                            "price": 0.56,
+                            "zone": 1,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 0.666667
+                        },
+                        "contributions": {
+                            "price": 14,
+                            "zone": 15,
+                            "area": 22.5,
+                            "rooms": 15,
+                            "facilities": 15
+                        },
+                        "reasons": [
+                            "area",
+                            "facilities",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 2,
+                        "listing_code": "PIR-004",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 81.25,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "effective_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "utilities": {
+                            "price": 0.71,
+                            "zone": 1,
+                            "area": 0.822222,
+                            "rooms": 1,
+                            "facilities": 0.666667
+                        },
+                        "contributions": {
+                            "price": 17.75,
+                            "zone": 15,
+                            "area": 18.5,
+                            "rooms": 15,
+                            "facilities": 15
+                        },
+                        "reasons": [
+                            "area",
+                            "price",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 3,
+                        "listing_code": "PIR-016",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 73.75,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "effective_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "utilities": {
+                            "price": 0.11,
+                            "zone": 1,
+                            "area": 0.822222,
+                            "rooms": 1,
+                            "facilities": 1
+                        },
+                        "contributions": {
+                            "price": 2.75,
+                            "zone": 15,
+                            "area": 18.5,
+                            "rooms": 15,
+                            "facilities": 22.5
+                        },
+                        "reasons": [
+                            "facilities",
+                            "area",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 4,
+                        "listing_code": "PIR-010",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 72.75,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "effective_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "utilities": {
+                            "price": 0.41,
+                            "zone": 1,
+                            "area": 1,
+                            "rooms": 0.666667,
+                            "facilities": 0.666667
+                        },
+                        "contributions": {
+                            "price": 10.25,
+                            "zone": 15,
+                            "area": 22.5,
+                            "rooms": 10,
+                            "facilities": 15
+                        },
+                        "reasons": [
+                            "area",
+                            "facilities",
+                            "zone"
+                        ]
+                    },
+                    {
+                        "rank": 5,
+                        "listing_code": "PIR-011",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 72,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "effective_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "utilities": {
+                            "price": 0.36,
+                            "zone": 0.7,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 0.666667
+                        },
+                        "contributions": {
+                            "price": 9,
+                            "zone": 10.5,
+                            "area": 22.5,
+                            "rooms": 15,
+                            "facilities": 15
+                        },
+                        "reasons": [
+                            "area",
+                            "facilities",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 6,
+                        "listing_code": "PIR-002",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 63.75,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "effective_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "utilities": {
+                            "price": 0.81,
+                            "zone": 0.7,
+                            "area": 0.688889,
+                            "rooms": 0.666667,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 20.25,
+                            "zone": 10.5,
+                            "area": 15.5,
+                            "rooms": 10,
+                            "facilities": 7.5
+                        },
+                        "reasons": [
+                            "price",
+                            "area",
+                            "zone"
+                        ]
+                    },
+                    {
+                        "rank": 7,
+                        "listing_code": "PIR-003",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 63.75,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "effective_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "utilities": {
+                            "price": 0.76,
+                            "zone": 0.35,
+                            "area": 0.755556,
+                            "rooms": 1,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 19,
+                            "zone": 5.25,
+                            "area": 17,
+                            "rooms": 15,
+                            "facilities": 7.5
+                        },
+                        "reasons": [
+                            "price",
+                            "area",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 8,
+                        "listing_code": "PIR-008",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 62.647059,
+                        "missing_fields": [
+                            "rooms"
+                        ],
+                        "original_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "effective_weights": {
+                            "price": 0.294118,
+                            "zone": 0.176471,
+                            "area": 0.264706,
+                            "rooms": 0,
+                            "facilities": 0.264706
+                        },
+                        "utilities": {
+                            "price": 0.51,
+                            "zone": 0.7,
+                            "area": 1,
+                            "rooms": null,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 15,
+                            "zone": 12.352941,
+                            "area": 26.470588,
+                            "rooms": null,
+                            "facilities": 8.823529
+                        },
+                        "reasons": [
+                            "area",
+                            "price",
+                            "zone"
+                        ]
+                    },
+                    {
+                        "rank": 9,
+                        "listing_code": "PIR-006",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 58.709677,
+                        "missing_fields": [
+                            "area"
+                        ],
+                        "original_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "effective_weights": {
+                            "price": 0.322581,
+                            "zone": 0.193548,
+                            "area": 0,
+                            "rooms": 0.193548,
+                            "facilities": 0.290323
+                        },
+                        "utilities": {
+                            "price": 0.61,
+                            "zone": 0.35,
+                            "area": null,
+                            "rooms": 0.666667,
+                            "facilities": 0.666667
+                        },
+                        "contributions": {
+                            "price": 19.677419,
+                            "zone": 6.774194,
+                            "area": null,
+                            "rooms": 12.903226,
+                            "facilities": 19.354839
+                        },
+                        "reasons": [
+                            "price",
+                            "facilities",
+                            "rooms"
+                        ]
+                    },
+                    {
+                        "rank": 10,
+                        "listing_code": "PIR-012",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 58,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "effective_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "utilities": {
+                            "price": 0.31,
+                            "zone": 0.35,
+                            "area": 1,
+                            "rooms": 1,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 7.75,
+                            "zone": 5.25,
+                            "area": 22.5,
+                            "rooms": 15,
+                            "facilities": 7.5
+                        },
+                        "reasons": [
+                            "area",
+                            "rooms",
+                            "price"
+                        ]
+                    },
+                    {
+                        "rank": 11,
+                        "listing_code": "PIR-018",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 44.5,
+                        "missing_fields": [],
+                        "original_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "effective_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "utilities": {
+                            "price": 0.01,
+                            "zone": 0.35,
+                            "area": 0.955556,
+                            "rooms": 0.666667,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 0.25,
+                            "zone": 5.25,
+                            "area": 21.5,
+                            "rooms": 10,
+                            "facilities": 7.5
+                        },
+                        "reasons": [
+                            "area",
+                            "rooms",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 12,
+                        "listing_code": "PIR-014",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 42.903226,
+                        "missing_fields": [
+                            "area"
+                        ],
+                        "original_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "effective_weights": {
+                            "price": 0.322581,
+                            "zone": 0.193548,
+                            "area": 0,
+                            "rooms": 0.193548,
+                            "facilities": 0.290323
+                        },
+                        "utilities": {
+                            "price": 0.21,
+                            "zone": 0.7,
+                            "area": null,
+                            "rooms": 0.666667,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 6.774194,
+                            "zone": 13.548387,
+                            "area": null,
+                            "rooms": 12.903226,
+                            "facilities": 9.677419
+                        },
+                        "reasons": [
+                            "zone",
+                            "rooms",
+                            "facilities"
+                        ]
+                    },
+                    {
+                        "rank": 13,
+                        "listing_code": "PIR-015",
+                        "model_version": "pir-hybrid-v1",
+                        "score": 39.705882,
+                        "missing_fields": [
+                            "rooms"
+                        ],
+                        "original_weights": {
+                            "price": 0.25,
+                            "zone": 0.15,
+                            "area": 0.225,
+                            "rooms": 0.15,
+                            "facilities": 0.225
+                        },
+                        "effective_weights": {
+                            "price": 0.294118,
+                            "zone": 0.176471,
+                            "area": 0.264706,
+                            "rooms": 0,
+                            "facilities": 0.264706
+                        },
+                        "utilities": {
+                            "price": 0.16,
+                            "zone": 0.35,
+                            "area": 0.755556,
+                            "rooms": null,
+                            "facilities": 0.333333
+                        },
+                        "contributions": {
+                            "price": 4.705882,
+                            "zone": 6.176471,
+                            "area": 20,
+                            "rooms": null,
+                            "facilities": 8.823529
+                        },
+                        "reasons": [
+                            "area",
+                            "facilities",
+                            "zone"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "run_metadata": {
+        "executed_at": "2026-09-23T20:30:26+00:00",
+        "duration_ms": 6.212
+    }
+}

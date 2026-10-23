@@ -8,8 +8,11 @@ rezultati prikupljeni.
 
 ## Rad i priprema
 
-- [Verzija 0.1](pir-verzija-0-1.md) — aktuelni pre-eksperimentalni nacrt za
-  mentorski pregled; empirijski rezultati još nisu prikupljeni.
+- [Verzija 0.2](pir-verzija-0-2.md) — tehnički i metodološki nacrt sa
+  zamrznutim sintetičkim ulazom, lokalnim offline poređenjem i ciljanim
+  proverama; nezavisne relevance ocene i korisnički rezultati još ne postoje.
+- [Verzija 0.1](pir-verzija-0-1.md) — aktuelni celoviti pre-eksperimentalni
+  istorijski nacrt, sa naknadnom napomenom o offline prototipu.
 - [Nulta verzija](pir-nulta-verzija.md) — raniji nacrt sa mestima za dopunu.
 - [Plan nastavka i metodološke odluke](pir-plan.md) — status, okvir rada,
   preduslovi za 0.2 i put do predaje. Ovo je početna tačka za novog agenta.
@@ -22,7 +25,7 @@ rezultati prikupljeni.
 ## Prilozi i referentni materijali
 
 - [Istraživački prilozi](research/README.md) — literatura, matrica dokaza,
-  scenariji, instrumenti i tehnički baseline.
+  scenariji, instrumenti, tehnički baseline i [offline rezultat](research/offline-evaluation-log-2026-09-23.md).
 - [Primer PIR rada](sources/pir-primer-aleksa-matejic.pdf) i
   [prezentacija sa uputstvom](sources/pir-uputstvo-prezentacija-v23-2.pptx) —
   referentni materijali za formu rada.

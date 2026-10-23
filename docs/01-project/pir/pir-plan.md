@@ -4,9 +4,9 @@
 реализована у интегрисаним технологијама“  
 **Predmet u okviru kog se razvija aplikacija:** Programiranje u integrisanim
 tehnologijama  
-**Status:** aktivan plan nastavka posle verzije 0.1; istraživački parametar i pravilo za ocenjivače zaključani, mentorsko i formalno odobrenje nisu evidentirani<br>
-**Datum provere:** 23. septembar 2026.<br>
-**Presek nacrta:** verzija 0.1 od 3. septembra 2026, tehnički dokazi na commit-u `d1489fb9a80bf8444bd6564768a5cbab14f28588`<br>
+**Status:** aktivan plan; nacrt verzije 0.2 i offline tehnički prototip postoje, ali empirijska evaluacija, mentorsko i formalno odobrenje nisu evidentirani<br>
+**Datum provere:** 23. oktobar 2026.<br>
+**Presek nacrta:** verzija 0.1 od 3. septembra 2026; najnoviji provereni offline kod na commit-u `1f39d57315bb674b68d9fab7f07c411f1695a054`<br>
 **Izvori za ovu fazu:** [primer PIR rada](sources/pir-primer-aleksa-matejic.pdf),
 [prezentacija sa uputstvom](sources/pir-uputstvo-prezentacija-v23-2.pptx),
 [`master-rad-sazetak.md`](master-rad-sazetak.md) i postojeća projektna
@@ -15,7 +15,7 @@ dokumentacija
 ## Namena dokumenta
 
 Ovaj dokument je kanonski plan daljeg razvoja PIR-a. Ranije odluke niže u
-dokumentu objašnjavaju njihov nastanak, ali [verzija 0.1](pir-verzija-0-1.md)
+dokumentu objašnjavaju njihov nastanak, ali [verzija 0.2](pir-verzija-0-2.md)
 i njeni [istraživački prilozi](research/README.md) određuju stanje nacrta.
 Za implementirano ponašanje merodavni su kod, testovi i konfiguracija.
 [Nulta verzija](pir-nulta-verzija.md) i [prompt za nju](pir-ai-prompt.md) su
@@ -29,10 +29,10 @@ mentorom i predmetnim nastavnikom.
 
 | Oblast | Utvrđeno stanje | Trag |
 | --- | --- | --- |
-| Tekst | Verzija 0.1 je celovit pre-eksperimentalni nacrt za mentorski pregled: problem, RQ1–RQ3, H1–H3, literatura, model, metod i ograničenja. Nema potvrđenih rezultata glavnog istraživanja. | [Nacrt](pir-verzija-0-1.md) |
+| Tekst | Verzija 0.2 je tehnički i metodološki nacrt za mentorski pregled, zasnovan na 0.1; nema empirijske rezultate, potvrđene fusnote za Word niti formalno odobrenje. | [Nacrt](pir-verzija-0-2.md) |
 | Literatura | Matrica sadrži 24 upotrebljena izvora; deo metapodataka traži završnu nezavisnu proveru. | [Matrica literature](research/literature-matrix.md) |
-| Tehnički dokaz | Postojeća heuristika je potvrđena kodom i ciljanim API testovima na novom preseku. Zaključane Composer zavisnosti su instalirane; 12 ciljanih testova i 40 asercija je prošlo uz izolovano učitan SQLite PDO. Hibrid sa eksplicitnim težinama nije implementiran ni testiran. | [Matrica dokaza](research/evidence-matrix.md), [novi baseline](research/technical-baseline-2026-09-23.md) |
-| Istraživanje | U prilozima nema popunjenog dataset-a, fiksiranih scenarija, nezavisnih relevance ocena, pilota ili korisničkih rezultata. | [Scenariji](research/scenarios.md), [instrumenti](research/instruments.md) |
+| Tehnički dokaz | Lokalni offline hibrid, CLI i izdvojeni legacy scorer postoje; 30 sintetičkih oglasa i S1/S2 daju 16/13 kandidata. Ciljani PIR/API testovi prolaze (23/564), pun backend suite prolazi (164/1132), kao i `pint --test`. Produkcioni recommendation API nema novi hibrid. | [Matrica dokaza](research/evidence-matrix.md), [offline log](research/offline-evaluation-log-2026-09-23.md) |
+| Istraživanje | Dataset, manifest i scenariji su zamrznuti kao sintetički tehnički ulaz. Pareto kompromisi su automatski provereni. Nema nezavisnih relevance ocena, `nDCG@5`, pilota ni korisničkih rezultata; trajanje najma nije posebno polje dataset-a. | [Scenariji](research/scenarios.md), [instrumenti](research/instruments.md) |
 | Predaja | Nema DOCX/PDF verzije 0.1 sa proverljivom paginacijom, sadržajem i fusnotama, ni evidentiranog odobrenja mentora i nastavnika. | PIR direktorijum i [uputstvo](sources/pir-uputstvo-prezentacija-v23-2.pptx) |
 
 Ovo je status dokumenata, ne tvrdnja da se van repozitorijuma ništa nije
@@ -84,9 +84,34 @@ nalazi i potvrda hipoteza nisu njen uslov. Ako dataset, adapter ili ocene ne
 budu završeni, navesti stvarno dostignuti podstatus, bez prikazivanja plana kao
 rezultata.
 
+### Preostali rad do rukopisa za Word i mentorski pregled
+
+Procena je za jednu osobu koja poznaje projekat, uz dostupno PHP okruženje;
+radni dani nisu kalendarski rok. Zavisi od odgovora mentora/nastavnika i
+dostupnosti ocenjivača i učesnika. [OpenSpec tasks](../../../openspec/changes/pir-offline-ranking-evaluation/tasks.md)
+su kontrolna lista za prvi tehnički blok.
+
+| Korak | Konkretno završiti | Procena aktivnog rada |
+| --- | --- | ---: |
+| Tehničko zatvaranje 0.2 | Validator/parity/CLI testovi, Pareto uslov, punoprecizan sort, stil, suite i izlaz su provereni; ostaje proverljiv atribut trajanja najma ako se želi tvrdnja o isključivo dugoročnom ulazu | otvoreno metodološko ograničenje |
+| Akademski tekst 0.2 | Poglavlja 4–6 i rank tabele su usklađeni u nacrtu; ostaju dijagrami, nezavisna provera 24 bibliografska zapisa i Word fusnote | 2–4 dana |
+| Ocene relevantnosti za H1 | Zaključati rubric i slepe prikaze, angažovati dva ocenjivača, razrešiti neslaganja, izračunati `nDCG@5`, `Precision@3` i top-1 | 2–4 dana aktivno, uz čekanje ocenjivača |
+| Pilot i UI za H2/H3 | Izolovana B varijanta, A/B tok, logging, prevod/provera SUS-a, saglasnost i pilot; po nalazu korigovati protokol | 4–7 dana |
+| Glavno istraživanje i analiza | Posle potrebnih odobrenja uključiti 10–20 punoletnih dobrovoljaca, sprovesti uparene zadatke, obraditi agregate i ograničenja | 4–8 dana aktivno, obično 1–3 nedelje kalendarski |
+| Završni rukopis i Word | Rezultati, diskusija, doprinos, zaključak, slike/tabele sa izvorima, sadržaj, fusnote, paginacija i provera 20–30 A4 strana | 3–5 dana |
+
+Preostali procenjeni zbir je **15–28 radnih dana** aktivnog rada, sa preklapanjem pojedinih koraka;
+kalendarski okvir je približno **4–8 nedelja** ako su ljudi i odobrenja brzo
+dostupni. Ovo nije rok predaje. Mentoru se može ranije poslati tehnički
+potkrepljen pre-eksperimentalni nacrt, jasno označen bez H1–H3 rezultata.
+Za verziju spremnu za predaju mentoru po punom okviru treba završiti navedene
+ocene i korisničku evaluaciju, potom usaglasiti administrativne podatke,
+organizaciju, obim, protokol podataka i formu rada. Mentorove korekcije i
+odobrenje nastavnika dolaze nakon tog rukopisa.
+
 ## Handoff novom agentu
 
-1. Pročitaj root `AGENTS.md`, ovaj plan, [0.1](pir-verzija-0-1.md) i ciljane
+1. Pročitaj root `AGENTS.md`, ovaj plan, [0.2](pir-verzija-0-2.md) i ciljane
    [priloge](research/README.md). Proveri `git status --short` i sačuvaj
    postojeće izmene pri premeštanju PIR fajlova.
 2. Tehničke navode iz 0.1 proveri prema trenutnom kodu, testovima i config-u.

@@ -31,6 +31,7 @@ class PirOfflineEvaluator
         foreach ($scenarios['scenarios'] as $scenario) {
             $candidates = array_values(array_filter($dataset['listings'], fn (array $row) => $this->passesHardFilters($row, $scenario['hard_filters'])));
             $this->require(count($candidates) >= 12 && count($candidates) <= 18, $scenario['id'].' needs 12–18 candidates');
+            $this->validateParetoTradeoffs($candidates, $scenario);
             $asOf = CarbonImmutable::parse($scenario['as_of']);
             $baseline = $candidates;
             usort($baseline, fn ($a, $b) => strcmp($b['published_at'], $a['published_at']) ?: strcmp($a['listing_code'], $b['listing_code']));
@@ -155,9 +156,14 @@ class PirOfflineEvaluator
                 'original_weights' => $this->roundValues($weights), 'effective_weights' => $this->roundValues($effective),
                 'utilities' => $this->roundValues($utilities), 'contributions' => $this->roundValues($contributions),
                 'reasons' => array_slice($reasons, 0, 3),
+                '_sort_score' => $score,
             ];
         }
-        usort($ranked, fn ($a, $b) => ($b['score'] <=> $a['score']) ?: (count($a['missing_fields']) <=> count($b['missing_fields'])) ?: strcmp($a['listing_code'], $b['listing_code']));
+        usort($ranked, fn ($a, $b) => ($b['_sort_score'] <=> $a['_sort_score']) ?: (count($a['missing_fields']) <=> count($b['missing_fields'])) ?: strcmp($a['listing_code'], $b['listing_code']));
+        foreach ($ranked as &$row) {
+            unset($row['_sort_score']);
+        }
+        unset($row);
 
         return $ranked;
     }
@@ -178,6 +184,41 @@ class PirOfflineEvaluator
             'rooms' => $rooms === null ? null : $clamp($rooms / $normal['rooms_target']),
             'facilities' => $facilities === null ? null : $clamp(count(array_intersect($preferred, $facilities)) / count($preferred)),
         ];
+    }
+
+    private function validateParetoTradeoffs(array $candidates, array $scenario): void
+    {
+        $utilities = array_map(fn ($row) => $this->utilities($row, $scenario['normalization']), $candidates);
+        $maxima = [];
+        foreach (self::CRITERIA as $criterion) {
+            $available = array_filter(array_column($utilities, $criterion), fn ($value) => $value !== null);
+            $this->require($available !== [], $scenario['id'].' has no available '.$criterion.' utility');
+            $maxima[$criterion] = max($available);
+        }
+        foreach ($utilities as $values) {
+            $belowMaximum = false;
+            foreach (self::CRITERIA as $criterion) {
+                $belowMaximum = $belowMaximum || $values[$criterion] === null || $values[$criterion] < $maxima[$criterion];
+            }
+            $this->require($belowMaximum, $scenario['id'].' has a candidate best on every criterion');
+        }
+        foreach ($utilities as $left) {
+            foreach ($utilities as $right) {
+                $better = false;
+                $worse = false;
+                foreach (self::CRITERIA as $criterion) {
+                    if ($left[$criterion] === null || $right[$criterion] === null) {
+                        continue;
+                    }
+                    $better = $better || $left[$criterion] > $right[$criterion];
+                    $worse = $worse || $left[$criterion] < $right[$criterion];
+                }
+                if ($better && $worse) {
+                    return;
+                }
+            }
+        }
+        throw new InvalidArgumentException($scenario['id'].' needs Pareto tradeoffs');
     }
 
     private function roundValues(array $values): array
